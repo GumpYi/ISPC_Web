@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "ISPC History Analysis Multi Yield View";     
+}
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Basic/HighchartsThemes/highcharts-3d.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ViewModel/HASPI/HASPIMultiDefectView.js")" type="text/javascript"></script>
+}
+<div id="firstDiv">
+</div>
+<div id="Condition">
+    <div class="container" style="background: #fff;">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-warning form-control" data-toggle="modal" data-target="#MultiDefectModel">
+                    <strong>Filling The Condition</strong></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="MultiDefectChart">
+    <div class="container" style="background: #fff;">
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div style="width: 100%; height: 400px;" id="DefectContainer">
+                </div>
+            </div>
+        </div>
+    <br />
+    </div>
+</div>
+
+<!--Model -->
+<div class="modal fade" id="MultiDefectModel" tabindex="-1" role="dialog" aria-labelledby="MultiDefectModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="MultiDefectModel">Condition</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fuild">
+        <div class="row"> 
+            <div class="col-md-8 col-md-offset-2">      
+            <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="availableBuildings">
+                    Buildings</label>
+                <select data-bind="options: availableBuildings, 
+                                optionsValue: 'Building_Id',
+                                optionsText: 'Building_Name',
+                                value: selectedBuildingTable,
+                                optionsCaption: 'Choose Building...',event: {change: loadSegments}"
+                    class="form-control input-sm" id="availableBuildings">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="availableSegments">
+                    Segments</label>
+                <select data-bind="options: availableSegments, 
+                                optionsValue: 'Segment_Id',
+                                optionsText: 'Segment_Name',
+                                value: selectedSegmentTable,
+                                optionsCaption: 'Choose Segment...'" class="form-control input-sm"
+                    id="availableSegments">
+                </select>
+            </div>
+            </form>                   
+            <div class="form-group" style="margin-bottom: 5px; margin-top: 10px;">
+                <div class="input-group date datetimepicker input-group-sm">
+                    <span class="input-group-addon">Start:</span>
+                    <input type="text" class="form-control" id="StartTime" placeholder="Start Time" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group date datetimepicker input-group-sm">
+                    <span class="input-group-addon">End:&nbsp;</span>
+                    <input type="text" class="form-control" id="EndTime" placeholder="End Time" />
+                </div>
+            </div>            
+            </div>
+        </div>
+    </div>      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="SaveMultiDefectDialog">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

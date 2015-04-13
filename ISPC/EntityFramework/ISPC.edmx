@@ -1,0 +1,3075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ISPCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ISPCModelStoreContainer">
+          <EntitySet Name="AOI_Board" EntityType="ISPCModel.Store.AOI_Board" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AOI_Component" EntityType="ISPCModel.Store.AOI_Component" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AOI_Panel" EntityType="ISPCModel.Store.AOI_Panel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Building" EntityType="ISPCModel.Store.Building" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BusinessUnit" EntityType="ISPCModel.Store.BusinessUnit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Defect_Type" EntityType="ISPCModel.Store.Defect_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Feeder" EntityType="ISPCModel.Store.Feeder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Line" EntityType="ISPCModel.Store.Line" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine" EntityType="ISPCModel.Store.Machine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine_Brand" EntityType="ISPCModel.Store.Machine_Brand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine_Model" EntityType="ISPCModel.Store.Machine_Model" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine_Status" EntityType="ISPCModel.Store.Machine_Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine_Type" EntityType="ISPCModel.Store.Machine_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Model" EntityType="ISPCModel.Store.Model" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Project" EntityType="ISPCModel.Store.Project" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Repair_State_Result" EntityType="ISPCModel.Store.Repair_State_Result" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Result" EntityType="ISPCModel.Store.Result" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Segment" EntityType="ISPCModel.Store.Segment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SPI_Board" EntityType="ISPCModel.Store.SPI_Board" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SPI_Pad" EntityType="ISPCModel.Store.SPI_Pad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SPI_Panel" EntityType="ISPCModel.Store.SPI_Panel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Station" EntityType="ISPCModel.Store.Station" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="ISPCModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="ISPCModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ISPCModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="ISPCModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="ISPCModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AOI_Board_AOI_Component" Association="ISPCModel.Store.FK_AOI_Board_AOI_Component">
+            <End Role="AOI_Board" EntitySet="AOI_Board" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AOI_Panel_AOI_Board" Association="ISPCModel.Store.FK_AOI_Panel_AOI_Board">
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+            <End Role="AOI_Board" EntitySet="AOI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BU_Project" Association="ISPCModel.Store.FK_BU_Project">
+            <End Role="BusinessUnit" EntitySet="BusinessUnit" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Building_Segment" Association="ISPCModel.Store.FK_Building_Segment">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Segment" EntitySet="Segment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Type_AOI_Component" Association="ISPCModel.Store.FK_Defect_Type_AOI_Component">
+            <End Role="Defect_Type" EntitySet="Defect_Type" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Type_SPI_Pad" Association="ISPCModel.Store.FK_Defect_Type_SPI_Pad">
+            <End Role="Defect_Type" EntitySet="Defect_Type" />
+            <End Role="SPI_Pad" EntitySet="SPI_Pad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feeder_AOI_Component" Association="ISPCModel.Store.FK_Feeder_AOI_Component">
+            <End Role="Feeder" EntitySet="Feeder" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Line_Station" Association="ISPCModel.Store.FK_Line_Station">
+            <End Role="Line" EntitySet="Line" />
+            <End Role="Station" EntitySet="Station" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Brand_Machine_Model" Association="ISPCModel.Store.FK_Machine_Brand_Machine_Model">
+            <End Role="Machine_Brand" EntitySet="Machine_Brand" />
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Model_Machine" Association="ISPCModel.Store.FK_Machine_Model_Machine">
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Station" Association="ISPCModel.Store.FK_Machine_Station">
+            <End Role="Machine" EntitySet="Machine" />
+            <End Role="Station" EntitySet="Station" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Status_Machine" Association="ISPCModel.Store.FK_Machine_Status_Machine">
+            <End Role="Machine_Status" EntitySet="Machine_Status" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Type_Defect_Type" Association="ISPCModel.Store.FK_Machine_Type_Defect_Type">
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+            <End Role="Defect_Type" EntitySet="Defect_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Type_Machine_Model" Association="ISPCModel.Store.FK_Machine_Type_Machine_Model">
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Type_Result" Association="ISPCModel.Store.FK_Machine_Type_Result">
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_AOI_Panel" Association="ISPCModel.Store.FK_Model_AOI_Panel">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_SPI_Panel" Association="ISPCModel.Store.FK_Model_SPI_Panel">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Model" Association="ISPCModel.Store.FK_Project_Model">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_AOI_Board" Association="ISPCModel.Store.FK_Result_AOI_Board">
+            <End Role="Result" EntitySet="Result" />
+            <End Role="AOI_Board" EntitySet="AOI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_AOI_Component" Association="ISPCModel.Store.FK_Result_AOI_Component">
+            <End Role="Result" EntitySet="Result" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_AOI_Panel" Association="ISPCModel.Store.FK_Result_AOI_Panel">
+            <End Role="Result" EntitySet="Result" />
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_SPI_Board" Association="ISPCModel.Store.FK_Result_SPI_Board">
+            <End Role="Result" EntitySet="Result" />
+            <End Role="SPI_Board" EntitySet="SPI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_SPI_Panel" Association="ISPCModel.Store.FK_Result_SPI_Panel">
+            <End Role="Result" EntitySet="Result" />
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="ISPCModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segment_BU" Association="ISPCModel.Store.FK_Segment_BU">
+            <End Role="Segment" EntitySet="Segment" />
+            <End Role="BusinessUnit" EntitySet="BusinessUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segment_Line" Association="ISPCModel.Store.FK_Segment_Line">
+            <End Role="Segment" EntitySet="Segment" />
+            <End Role="Line" EntitySet="Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segment_Project" Association="ISPCModel.Store.FK_Segment_Project">
+            <End Role="Segment" EntitySet="Segment" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPI_Board_SPI_Pad" Association="ISPCModel.Store.FK_SPI_Board_SPI_Pad">
+            <End Role="SPI_Board" EntitySet="SPI_Board" />
+            <End Role="SPI_Pad" EntitySet="SPI_Pad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPI_Panel_SPI_Board" Association="ISPCModel.Store.FK_SPI_Panel_SPI_Board">
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+            <End Role="SPI_Board" EntitySet="SPI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_AOI_Panel" Association="ISPCModel.Store.FK_Station_AOI_Panel">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_Feeder" Association="ISPCModel.Store.FK_Station_Feeder">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="Feeder" EntitySet="Feeder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_SPI_Panel" Association="ISPCModel.Store.FK_Station_SPI_Panel">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="ISPCModel.Store.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Building" Association="ISPCModel.Store.FK_UserProfile_Building">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Building" EntitySet="Building" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_BusinessUnit" Association="ISPCModel.Store.FK_UserProfile_BusinessUnit">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="BusinessUnit" EntitySet="BusinessUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Line" Association="ISPCModel.Store.FK_UserProfile_Line">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Line" EntitySet="Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine" Association="ISPCModel.Store.FK_UserProfile_Machine">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Brand" Association="ISPCModel.Store.FK_UserProfile_Machine_Brand">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Machine_Brand" EntitySet="Machine_Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Model" Association="ISPCModel.Store.FK_UserProfile_Machine_Model">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Status" Association="ISPCModel.Store.FK_UserProfile_Machine_Status">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Machine_Status" EntitySet="Machine_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Type" Association="ISPCModel.Store.FK_UserProfile_Machine_Type">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Model" Association="ISPCModel.Store.FK_UserProfile_Model">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Project" Association="ISPCModel.Store.FK_UserProfile_Project">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Result" Association="ISPCModel.Store.FK_UserProfile_Result">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Segment" Association="ISPCModel.Store.FK_UserProfile_Segment">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Segment" EntitySet="Segment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Station" Association="ISPCModel.Store.FK_UserProfile_Station">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Station" EntitySet="Station" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AOI_Board">
+          <Key>
+            <PropertyRef Name="Board_Id" />
+          </Key>
+          <Property Name="Board_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Panel_Id" Type="int" Nullable="false" />
+          <Property Name="Board_Barcode" Type="nvarchar" MaxLength="200" />
+          <Property Name="Result_Id" Type="int" Nullable="false" />
+          <Property Name="Total_Comps_Num" Type="int" />
+          <Property Name="Total_Pins_Num" Type="int" />
+          <Property Name="Indict_Comps_Num" Type="int" />
+          <Property Name="Indict_Pins_Num" Type="int" />
+          <Property Name="Defect_Num" Type="int" />
+          <Property Name="Active_Defect_Num" Type="int" />
+          <Property Name="Active_Pins_Num" Type="int" />
+          <Property Name="Active_Comps_Num" Type="int" />
+          <Property Name="FalseCall_Defect_Num" Type="int" />
+          <Property Name="FalseCall_Pins_Num" Type="int" />
+          <Property Name="FalseCall_Comps_Num" Type="int" />
+        </EntityType>
+        <EntityType Name="AOI_Component">
+          <Key>
+            <PropertyRef Name="Component_Id" />
+          </Key>
+          <Property Name="Component_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Board_Id" Type="int" Nullable="false" />
+          <Property Name="Component_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Defect_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Repair_State_Result_Id" Type="int" Nullable="false" />
+          <Property Name="Algorithm" Type="nvarchar" MaxLength="200" />
+          <Property Name="PartNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="Feeder_Id" Type="int" />
+          <Property Name="RemarkDefectType" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="AOI_Panel">
+          <Key>
+            <PropertyRef Name="Panel_Id" />
+          </Key>
+          <Property Name="Panel_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Id" Type="int" Nullable="false" />
+          <Property Name="Panel_Barcode" Type="nvarchar" MaxLength="200" />
+          <Property Name="Model_Id" Type="int" Nullable="false" />
+          <Property Name="Start_Time" Type="datetime" Nullable="false" />
+          <Property Name="End_Time" Type="datetime" Nullable="false" />
+          <Property Name="Cycle_Time" Type="float" Nullable="false" />
+          <Property Name="Result_Id" Type="int" Nullable="false" />
+          <Property Name="Operator_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Total_Comps_Num" Type="int" />
+          <Property Name="Total_Pins_Num" Type="int" />
+          <Property Name="Indict_Comps_Num" Type="int" />
+          <Property Name="Indict_Pins_Num" Type="int" />
+          <Property Name="Defect_Num" Type="int" />
+          <Property Name="Active_Defect_Num" Type="int" />
+          <Property Name="Active_Pins_Num" Type="int" />
+          <Property Name="Active_Comps_Num" Type="int" />
+          <Property Name="FalseCall_Defect_Num" Type="int" />
+          <Property Name="FalseCall_Pins_Num" Type="int" />
+          <Property Name="FalseCall_Comps_Num" Type="int" />
+          <Property Name="Timespan" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Building_Id" />
+          </Key>
+          <Property Name="Building_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Building_Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="Effect_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="BU_Id" />
+          </Key>
+          <Property Name="BU_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BU_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Segment_Id" Type="int" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="Effect_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Defect_Type">
+          <Key>
+            <PropertyRef Name="Defect_Type_Id" />
+          </Key>
+          <Property Name="Defect_Type_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Defect_Type_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="MachineBrandName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Machine_Type_Id" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feeder">
+          <Key>
+            <PropertyRef Name="Feeder_Id" />
+          </Key>
+          <Property Name="Feeder_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Line">
+          <Key>
+            <PropertyRef Name="Line_Id" />
+          </Key>
+          <Property Name="Line_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Line_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Segment_Id" Type="int" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Is_NPI" Type="bit" Nullable="false" />
+          <Property Name="Line_Location" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="Effect_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="Machine_Id" />
+          </Key>
+          <Property Name="Machine_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Asset_Num" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Machine_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Machine_Status_Id" Type="int" Nullable="false" />
+          <Property Name="Machine_Model_Id" Type="int" Nullable="false" />
+          <Property Name="Building_Id" Type="int" Nullable="false" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Machine_Brand">
+          <Key>
+            <PropertyRef Name="Machine_Brand_Id" />
+          </Key>
+          <Property Name="Machine_Brand_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Brand_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Machine_Model">
+          <Key>
+            <PropertyRef Name="Machine_Model_Id" />
+          </Key>
+          <Property Name="Machine_Model_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Brand_Id" Type="int" Nullable="false" />
+          <Property Name="Machine_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Machine_Model_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Machine_Picture_Url" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Machine_Status">
+          <Key>
+            <PropertyRef Name="Machine_Status_Id" />
+          </Key>
+          <Property Name="Machine_Status_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Machine_Type">
+          <Key>
+            <PropertyRef Name="Machine_Type_Id" />
+          </Key>
+          <Property Name="Machine_Type_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Type_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Model_Id" />
+          </Key>
+          <Property Name="Model_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Model_Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Project_Id" Type="int" />
+          <Property Name="Components" Type="nvarchar(max)" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Project_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Project_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Segment_Id" Type="int" Nullable="false" />
+          <Property Name="BU_Id" Type="int" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="Effect_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repair_State_Result">
+          <Key>
+            <PropertyRef Name="Repair_State_Result_Id" />
+          </Key>
+          <Property Name="Repair_State_Result_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Repair_State_Result_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="Result_Id" />
+          </Key>
+          <Property Name="Result_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Result_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="MachineBrandName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Machine_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Segment">
+          <Key>
+            <PropertyRef Name="Segment_Id" />
+          </Key>
+          <Property Name="Segment_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Segment_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Segment_Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Building_Id" Type="int" Nullable="false" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="Effect_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SPI_Board">
+          <Key>
+            <PropertyRef Name="Board_Id" />
+          </Key>
+          <Property Name="Board_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Panel_Id" Type="int" Nullable="false" />
+          <Property Name="Board_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Board_Barcode" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Result_Id" Type="int" />
+          <Property Name="TotalPads_Num" Type="int" Nullable="false" />
+          <Property Name="ErrorPads_Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SPI_Pad">
+          <Key>
+            <PropertyRef Name="Pad_Id" />
+          </Key>
+          <Property Name="Pad_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Board_Id" Type="int" Nullable="false" />
+          <Property Name="Component_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Defect_Type_Id" Type="int" Nullable="false" />
+          <Property Name="Height" Type="float" />
+          <Property Name="Real_Area" Type="float" />
+          <Property Name="Area" Type="float" />
+          <Property Name="Real_Volume" Type="float" />
+          <Property Name="Volume" Type="float" />
+          <Property Name="Offset_X" Type="float" />
+          <Property Name="Offset_Y" Type="float" />
+          <Property Name="Position_X" Type="float" />
+          <Property Name="Position_Y" Type="float" />
+          <Property Name="Pad_X" Type="float" />
+          <Property Name="Pad_Y" Type="float" />
+        </EntityType>
+        <EntityType Name="SPI_Panel">
+          <Key>
+            <PropertyRef Name="Panel_Id" />
+          </Key>
+          <Property Name="Panel_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Id" Type="int" Nullable="false" />
+          <Property Name="Model_Id" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Operator_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Panel_Barcode" Type="nvarchar" MaxLength="200" />
+          <Property Name="Total_Pads_Num" Type="int" Nullable="false" />
+          <Property Name="Error_Pads_Num" Type="int" Nullable="false" />
+          <Property Name="Squeegee" Type="nvarchar" MaxLength="50" />
+          <Property Name="Start_Time" Type="datetime" Nullable="false" />
+          <Property Name="End_Time" Type="datetime" Nullable="false" />
+          <Property Name="Cycle_Time" Type="float" Nullable="false" />
+          <Property Name="Result_Id" Type="int" Nullable="false" />
+          <Property Name="Volume_Avg" Type="float" Nullable="false" />
+          <Property Name="Height_Avg" Type="float" Nullable="false" />
+          <Property Name="Area_Avg" Type="float" Nullable="false" />
+          <Property Name="Timespan" Type="datetime" Nullable="false" />
+          <Property Name="Cp" Type="float" />
+          <Property Name="Cpk" Type="float" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="Station_Id" />
+          </Key>
+          <Property Name="Station_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StationComputerAddress" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Machine_Id" Type="int" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Line_Id" Type="int" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="Creator_Id" Type="int" Nullable="false" />
+          <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="Effect_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AOI_Board_AOI_Component">
+          <End Role="AOI_Board" Type="ISPCModel.Store.AOI_Board" Multiplicity="1" />
+          <End Role="AOI_Component" Type="ISPCModel.Store.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AOI_Board">
+              <PropertyRef Name="Board_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Board_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AOI_Panel_AOI_Board">
+          <End Role="AOI_Panel" Type="ISPCModel.Store.AOI_Panel" Multiplicity="1" />
+          <End Role="AOI_Board" Type="ISPCModel.Store.AOI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AOI_Panel">
+              <PropertyRef Name="Panel_Id" />
+            </Principal>
+            <Dependent Role="AOI_Board">
+              <PropertyRef Name="Panel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BU_Project">
+          <End Role="BusinessUnit" Type="ISPCModel.Store.BusinessUnit" Multiplicity="0..1" />
+          <End Role="Project" Type="ISPCModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BU_Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="BU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Building_Segment">
+          <End Role="Building" Type="ISPCModel.Store.Building" Multiplicity="1" />
+          <End Role="Segment" Type="ISPCModel.Store.Segment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Building_Id" />
+            </Principal>
+            <Dependent Role="Segment">
+              <PropertyRef Name="Building_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Type_AOI_Component">
+          <End Role="Defect_Type" Type="ISPCModel.Store.Defect_Type" Multiplicity="1" />
+          <End Role="AOI_Component" Type="ISPCModel.Store.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defect_Type">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Type_SPI_Pad">
+          <End Role="Defect_Type" Type="ISPCModel.Store.Defect_Type" Multiplicity="1" />
+          <End Role="SPI_Pad" Type="ISPCModel.Store.SPI_Pad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defect_Type">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Principal>
+            <Dependent Role="SPI_Pad">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feeder_AOI_Component">
+          <End Role="Feeder" Type="ISPCModel.Store.Feeder" Multiplicity="0..1" />
+          <End Role="AOI_Component" Type="ISPCModel.Store.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feeder">
+              <PropertyRef Name="Feeder_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Feeder_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Line_Station">
+          <End Role="Line" Type="ISPCModel.Store.Line" Multiplicity="1" />
+          <End Role="Station" Type="ISPCModel.Store.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Line">
+              <PropertyRef Name="Line_Id" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="Line_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Brand_Machine_Model">
+          <End Role="Machine_Brand" Type="ISPCModel.Store.Machine_Brand" Multiplicity="1" />
+          <End Role="Machine_Model" Type="ISPCModel.Store.Machine_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Brand">
+              <PropertyRef Name="Machine_Brand_Id" />
+            </Principal>
+            <Dependent Role="Machine_Model">
+              <PropertyRef Name="Machine_Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Model_Machine">
+          <End Role="Machine_Model" Type="ISPCModel.Store.Machine_Model" Multiplicity="1" />
+          <End Role="Machine" Type="ISPCModel.Store.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Model">
+              <PropertyRef Name="Machine_Model_Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="Machine_Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Station">
+          <End Role="Machine" Type="ISPCModel.Store.Machine" Multiplicity="0..1" />
+          <End Role="Station" Type="ISPCModel.Store.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine">
+              <PropertyRef Name="Machine_Id" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="Machine_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Status_Machine">
+          <End Role="Machine_Status" Type="ISPCModel.Store.Machine_Status" Multiplicity="1" />
+          <End Role="Machine" Type="ISPCModel.Store.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Status">
+              <PropertyRef Name="Machine_Status_Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="Machine_Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Type_Defect_Type">
+          <End Role="Machine_Type" Type="ISPCModel.Store.Machine_Type" Multiplicity="1" />
+          <End Role="Defect_Type" Type="ISPCModel.Store.Defect_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Principal>
+            <Dependent Role="Defect_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Type_Machine_Model">
+          <End Role="Machine_Type" Type="ISPCModel.Store.Machine_Type" Multiplicity="1" />
+          <End Role="Machine_Model" Type="ISPCModel.Store.Machine_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Principal>
+            <Dependent Role="Machine_Model">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Type_Result">
+          <End Role="Machine_Type" Type="ISPCModel.Store.Machine_Type" Multiplicity="1" />
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_AOI_Panel">
+          <End Role="Model" Type="ISPCModel.Store.Model" Multiplicity="1" />
+          <End Role="AOI_Panel" Type="ISPCModel.Store.AOI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Model_Id" />
+            </Principal>
+            <Dependent Role="AOI_Panel">
+              <PropertyRef Name="Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_SPI_Panel">
+          <End Role="Model" Type="ISPCModel.Store.Model" Multiplicity="1" />
+          <End Role="SPI_Panel" Type="ISPCModel.Store.SPI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Model_Id" />
+            </Principal>
+            <Dependent Role="SPI_Panel">
+              <PropertyRef Name="Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Model">
+          <End Role="Project" Type="ISPCModel.Store.Project" Multiplicity="0..1" />
+          <End Role="Model" Type="ISPCModel.Store.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_AOI_Board">
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="1" />
+          <End Role="AOI_Board" Type="ISPCModel.Store.AOI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="AOI_Board">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_AOI_Component">
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="1" />
+          <End Role="AOI_Component" Type="ISPCModel.Store.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Repair_State_Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_AOI_Panel">
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="1" />
+          <End Role="AOI_Panel" Type="ISPCModel.Store.AOI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="AOI_Panel">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_SPI_Board">
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="0..1" />
+          <End Role="SPI_Board" Type="ISPCModel.Store.SPI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="SPI_Board">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_SPI_Panel">
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="1" />
+          <End Role="SPI_Panel" Type="ISPCModel.Store.SPI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="SPI_Panel">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="ISPCModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="ISPCModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segment_BU">
+          <End Role="Segment" Type="ISPCModel.Store.Segment" Multiplicity="1" />
+          <End Role="BusinessUnit" Type="ISPCModel.Store.BusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segment">
+              <PropertyRef Name="Segment_Id" />
+            </Principal>
+            <Dependent Role="BusinessUnit">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segment_Line">
+          <End Role="Segment" Type="ISPCModel.Store.Segment" Multiplicity="1" />
+          <End Role="Line" Type="ISPCModel.Store.Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segment">
+              <PropertyRef Name="Segment_Id" />
+            </Principal>
+            <Dependent Role="Line">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segment_Project">
+          <End Role="Segment" Type="ISPCModel.Store.Segment" Multiplicity="1" />
+          <End Role="Project" Type="ISPCModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segment">
+              <PropertyRef Name="Segment_Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPI_Board_SPI_Pad">
+          <End Role="SPI_Board" Type="ISPCModel.Store.SPI_Board" Multiplicity="1" />
+          <End Role="SPI_Pad" Type="ISPCModel.Store.SPI_Pad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPI_Board">
+              <PropertyRef Name="Board_Id" />
+            </Principal>
+            <Dependent Role="SPI_Pad">
+              <PropertyRef Name="Board_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPI_Panel_SPI_Board">
+          <End Role="SPI_Panel" Type="ISPCModel.Store.SPI_Panel" Multiplicity="1" />
+          <End Role="SPI_Board" Type="ISPCModel.Store.SPI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPI_Panel">
+              <PropertyRef Name="Panel_Id" />
+            </Principal>
+            <Dependent Role="SPI_Board">
+              <PropertyRef Name="Panel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_AOI_Panel">
+          <End Role="Station" Type="ISPCModel.Store.Station" Multiplicity="1" />
+          <End Role="AOI_Panel" Type="ISPCModel.Store.AOI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Station_Id" />
+            </Principal>
+            <Dependent Role="AOI_Panel">
+              <PropertyRef Name="Station_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_Feeder">
+          <End Role="Station" Type="ISPCModel.Store.Station" Multiplicity="1" />
+          <End Role="Feeder" Type="ISPCModel.Store.Feeder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Station_Id" />
+            </Principal>
+            <Dependent Role="Feeder">
+              <PropertyRef Name="Station_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_SPI_Panel">
+          <End Role="Station" Type="ISPCModel.Store.Station" Multiplicity="1" />
+          <End Role="SPI_Panel" Type="ISPCModel.Store.SPI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Station_Id" />
+            </Principal>
+            <Dependent Role="SPI_Panel">
+              <PropertyRef Name="Station_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="ISPCModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Building">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Building" Type="ISPCModel.Store.Building" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Building">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_BusinessUnit">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="BusinessUnit" Type="ISPCModel.Store.BusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BusinessUnit">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Line">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Line" Type="ISPCModel.Store.Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Line">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Machine" Type="ISPCModel.Store.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Brand">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Brand" Type="ISPCModel.Store.Machine_Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Brand">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Model">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Model" Type="ISPCModel.Store.Machine_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Model">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Status">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Status" Type="ISPCModel.Store.Machine_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Status">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Type">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Type" Type="ISPCModel.Store.Machine_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Type">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Model">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Model" Type="ISPCModel.Store.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Project">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Project" Type="ISPCModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Result">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Result" Type="ISPCModel.Store.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Segment">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Segment" Type="ISPCModel.Store.Segment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Segment">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Station">
+          <End Role="UserProfile" Type="ISPCModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Station" Type="ISPCModel.Store.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="user_AOIXmlReader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="signal_xml" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="signal_xml_def" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="error_code" Type="int" Mode="InOut" />
+          <Parameter Name="error_message_xml" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="filename" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="user_ISPCXmlReader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="signal_xml" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="signal_xml_def" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="error_code" Type="int" Mode="InOut" />
+          <Parameter Name="error_message_xml" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="filename" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="user_SPIXmlReader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="signal_xml" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="signal_xml_def" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="error_code" Type="int" Mode="InOut" />
+          <Parameter Name="error_message_xml" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="filename" Type="nvarchar" Mode="InOut" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ISPCModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AOI_Board" EntityType="ISPCModel.AOI_Board" />
+          <EntitySet Name="AOI_Component" EntityType="ISPCModel.AOI_Component" />
+          <EntitySet Name="AOI_Panel" EntityType="ISPCModel.AOI_Panel" />
+          <EntitySet Name="Buildings" EntityType="ISPCModel.Building" />
+          <EntitySet Name="BusinessUnits" EntityType="ISPCModel.BusinessUnit" />
+          <EntitySet Name="Defect_Type" EntityType="ISPCModel.Defect_Type" />
+          <EntitySet Name="Feeders" EntityType="ISPCModel.Feeder" />
+          <EntitySet Name="Lines" EntityType="ISPCModel.Line" />
+          <EntitySet Name="Machines" EntityType="ISPCModel.Machine" />
+          <EntitySet Name="Machine_Brand" EntityType="ISPCModel.Machine_Brand" />
+          <EntitySet Name="Machine_Model" EntityType="ISPCModel.Machine_Model" />
+          <EntitySet Name="Machine_Status" EntityType="ISPCModel.Machine_Status" />
+          <EntitySet Name="Machine_Type" EntityType="ISPCModel.Machine_Type" />
+          <EntitySet Name="Models" EntityType="ISPCModel.Model" />
+          <EntitySet Name="Projects" EntityType="ISPCModel.Project" />
+          <EntitySet Name="Repair_State_Result" EntityType="ISPCModel.Repair_State_Result" />
+          <EntitySet Name="Results" EntityType="ISPCModel.Result" />
+          <EntitySet Name="Segments" EntityType="ISPCModel.Segment" />
+          <EntitySet Name="SPI_Board" EntityType="ISPCModel.SPI_Board" />
+          <EntitySet Name="SPI_Pad" EntityType="ISPCModel.SPI_Pad" />
+          <EntitySet Name="SPI_Panel" EntityType="ISPCModel.SPI_Panel" />
+          <EntitySet Name="Stations" EntityType="ISPCModel.Station" />
+          <EntitySet Name="UserProfiles" EntityType="ISPCModel.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="ISPCModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ISPCModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="ISPCModel.webpages_Roles" />
+          <AssociationSet Name="FK_AOI_Board_AOI_Component" Association="ISPCModel.FK_AOI_Board_AOI_Component">
+            <End Role="AOI_Board" EntitySet="AOI_Board" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AOI_Panel_AOI_Board" Association="ISPCModel.FK_AOI_Panel_AOI_Board">
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+            <End Role="AOI_Board" EntitySet="AOI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_AOI_Board" Association="ISPCModel.FK_Result_AOI_Board">
+            <End Role="Result" EntitySet="Results" />
+            <End Role="AOI_Board" EntitySet="AOI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Type_AOI_Component" Association="ISPCModel.FK_Defect_Type_AOI_Component">
+            <End Role="Defect_Type" EntitySet="Defect_Type" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feeder_AOI_Component" Association="ISPCModel.FK_Feeder_AOI_Component">
+            <End Role="Feeder" EntitySet="Feeders" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_AOI_Component" Association="ISPCModel.FK_Result_AOI_Component">
+            <End Role="Result" EntitySet="Results" />
+            <End Role="AOI_Component" EntitySet="AOI_Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_AOI_Panel" Association="ISPCModel.FK_Model_AOI_Panel">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_AOI_Panel" Association="ISPCModel.FK_Result_AOI_Panel">
+            <End Role="Result" EntitySet="Results" />
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_AOI_Panel" Association="ISPCModel.FK_Station_AOI_Panel">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="AOI_Panel" EntitySet="AOI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Building_Segment" Association="ISPCModel.FK_Building_Segment">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Segment" EntitySet="Segments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Building" Association="ISPCModel.FK_UserProfile_Building">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Building" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BU_Project" Association="ISPCModel.FK_BU_Project">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segment_BU" Association="ISPCModel.FK_Segment_BU">
+            <End Role="Segment" EntitySet="Segments" />
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_BusinessUnit" Association="ISPCModel.FK_UserProfile_BusinessUnit">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Type_SPI_Pad" Association="ISPCModel.FK_Defect_Type_SPI_Pad">
+            <End Role="Defect_Type" EntitySet="Defect_Type" />
+            <End Role="SPI_Pad" EntitySet="SPI_Pad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Type_Defect_Type" Association="ISPCModel.FK_Machine_Type_Defect_Type">
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+            <End Role="Defect_Type" EntitySet="Defect_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_Feeder" Association="ISPCModel.FK_Station_Feeder">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="Feeder" EntitySet="Feeders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Line_Station" Association="ISPCModel.FK_Line_Station">
+            <End Role="Line" EntitySet="Lines" />
+            <End Role="Station" EntitySet="Stations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segment_Line" Association="ISPCModel.FK_Segment_Line">
+            <End Role="Segment" EntitySet="Segments" />
+            <End Role="Line" EntitySet="Lines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Line" Association="ISPCModel.FK_UserProfile_Line">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Line" EntitySet="Lines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Model_Machine" Association="ISPCModel.FK_Machine_Model_Machine">
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+            <End Role="Machine" EntitySet="Machines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Station" Association="ISPCModel.FK_Machine_Station">
+            <End Role="Machine" EntitySet="Machines" />
+            <End Role="Station" EntitySet="Stations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Status_Machine" Association="ISPCModel.FK_Machine_Status_Machine">
+            <End Role="Machine_Status" EntitySet="Machine_Status" />
+            <End Role="Machine" EntitySet="Machines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine" Association="ISPCModel.FK_UserProfile_Machine">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Machine" EntitySet="Machines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Brand_Machine_Model" Association="ISPCModel.FK_Machine_Brand_Machine_Model">
+            <End Role="Machine_Brand" EntitySet="Machine_Brand" />
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Brand" Association="ISPCModel.FK_UserProfile_Machine_Brand">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Machine_Brand" EntitySet="Machine_Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Type_Machine_Model" Association="ISPCModel.FK_Machine_Type_Machine_Model">
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Model" Association="ISPCModel.FK_UserProfile_Machine_Model">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Machine_Model" EntitySet="Machine_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Status" Association="ISPCModel.FK_UserProfile_Machine_Status">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Machine_Status" EntitySet="Machine_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_Type_Result" Association="ISPCModel.FK_Machine_Type_Result">
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Machine_Type" Association="ISPCModel.FK_UserProfile_Machine_Type">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Machine_Type" EntitySet="Machine_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_SPI_Panel" Association="ISPCModel.FK_Model_SPI_Panel">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Model" Association="ISPCModel.FK_Project_Model">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Model" Association="ISPCModel.FK_UserProfile_Model">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Segment_Project" Association="ISPCModel.FK_Segment_Project">
+            <End Role="Segment" EntitySet="Segments" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Project" Association="ISPCModel.FK_UserProfile_Project">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_SPI_Board" Association="ISPCModel.FK_Result_SPI_Board">
+            <End Role="Result" EntitySet="Results" />
+            <End Role="SPI_Board" EntitySet="SPI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_SPI_Panel" Association="ISPCModel.FK_Result_SPI_Panel">
+            <End Role="Result" EntitySet="Results" />
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Result" Association="ISPCModel.FK_UserProfile_Result">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Segment" Association="ISPCModel.FK_UserProfile_Segment">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Segment" EntitySet="Segments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPI_Board_SPI_Pad" Association="ISPCModel.FK_SPI_Board_SPI_Pad">
+            <End Role="SPI_Board" EntitySet="SPI_Board" />
+            <End Role="SPI_Pad" EntitySet="SPI_Pad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPI_Panel_SPI_Board" Association="ISPCModel.FK_SPI_Panel_SPI_Board">
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+            <End Role="SPI_Board" EntitySet="SPI_Board" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_SPI_Panel" Association="ISPCModel.FK_Station_SPI_Panel">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="SPI_Panel" EntitySet="SPI_Panel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Station" Association="ISPCModel.FK_UserProfile_Station">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Station" EntitySet="Stations" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="ISPCModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AOI_Board">
+          <Key>
+            <PropertyRef Name="Board_Id" />
+          </Key>
+          <Property Name="Board_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Panel_Id" Type="Int32" Nullable="false" />
+          <Property Name="Board_Barcode" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Result_Id" Type="Int32" Nullable="false" />
+          <Property Name="Total_Comps_Num" Type="Int32" />
+          <Property Name="Total_Pins_Num" Type="Int32" />
+          <Property Name="Indict_Comps_Num" Type="Int32" />
+          <Property Name="Indict_Pins_Num" Type="Int32" />
+          <Property Name="Defect_Num" Type="Int32" />
+          <Property Name="Active_Defect_Num" Type="Int32" />
+          <Property Name="Active_Pins_Num" Type="Int32" />
+          <Property Name="Active_Comps_Num" Type="Int32" />
+          <Property Name="FalseCall_Defect_Num" Type="Int32" />
+          <Property Name="FalseCall_Pins_Num" Type="Int32" />
+          <Property Name="FalseCall_Comps_Num" Type="Int32" />
+          <NavigationProperty Name="AOI_Component" Relationship="ISPCModel.FK_AOI_Board_AOI_Component" FromRole="AOI_Board" ToRole="AOI_Component" />
+          <NavigationProperty Name="AOI_Panel" Relationship="ISPCModel.FK_AOI_Panel_AOI_Board" FromRole="AOI_Board" ToRole="AOI_Panel" />
+          <NavigationProperty Name="Result" Relationship="ISPCModel.FK_Result_AOI_Board" FromRole="AOI_Board" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="AOI_Component">
+          <Key>
+            <PropertyRef Name="Component_Id" />
+          </Key>
+          <Property Name="Component_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Board_Id" Type="Int32" Nullable="false" />
+          <Property Name="Component_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Defect_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Repair_State_Result_Id" Type="Int32" Nullable="false" />
+          <Property Name="Algorithm" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PartNumber" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Feeder_Id" Type="Int32" />
+          <Property Name="RemarkDefectType" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AOI_Board" Relationship="ISPCModel.FK_AOI_Board_AOI_Component" FromRole="AOI_Component" ToRole="AOI_Board" />
+          <NavigationProperty Name="Defect_Type" Relationship="ISPCModel.FK_Defect_Type_AOI_Component" FromRole="AOI_Component" ToRole="Defect_Type" />
+          <NavigationProperty Name="Feeder" Relationship="ISPCModel.FK_Feeder_AOI_Component" FromRole="AOI_Component" ToRole="Feeder" />
+          <NavigationProperty Name="Result" Relationship="ISPCModel.FK_Result_AOI_Component" FromRole="AOI_Component" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="AOI_Panel">
+          <Key>
+            <PropertyRef Name="Panel_Id" />
+          </Key>
+          <Property Name="Panel_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Id" Type="Int32" Nullable="false" />
+          <Property Name="Panel_Barcode" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Model_Id" Type="Int32" Nullable="false" />
+          <Property Name="Start_Time" Type="DateTime" Nullable="false" />
+          <Property Name="End_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Cycle_Time" Type="Double" Nullable="false" />
+          <Property Name="Result_Id" Type="Int32" Nullable="false" />
+          <Property Name="Operator_Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Total_Comps_Num" Type="Int32" />
+          <Property Name="Total_Pins_Num" Type="Int32" />
+          <Property Name="Indict_Comps_Num" Type="Int32" />
+          <Property Name="Indict_Pins_Num" Type="Int32" />
+          <Property Name="Defect_Num" Type="Int32" />
+          <Property Name="Active_Defect_Num" Type="Int32" />
+          <Property Name="Active_Pins_Num" Type="Int32" />
+          <Property Name="Active_Comps_Num" Type="Int32" />
+          <Property Name="FalseCall_Defect_Num" Type="Int32" />
+          <Property Name="FalseCall_Pins_Num" Type="Int32" />
+          <Property Name="FalseCall_Comps_Num" Type="Int32" />
+          <Property Name="Timespan" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AOI_Board" Relationship="ISPCModel.FK_AOI_Panel_AOI_Board" FromRole="AOI_Panel" ToRole="AOI_Board" />
+          <NavigationProperty Name="Model" Relationship="ISPCModel.FK_Model_AOI_Panel" FromRole="AOI_Panel" ToRole="Model" />
+          <NavigationProperty Name="Result" Relationship="ISPCModel.FK_Result_AOI_Panel" FromRole="AOI_Panel" ToRole="Result" />
+          <NavigationProperty Name="Station" Relationship="ISPCModel.FK_Station_AOI_Panel" FromRole="AOI_Panel" ToRole="Station" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Building_Id" />
+          </Key>
+          <Property Name="Building_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Building_Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Effect_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Segments" Relationship="ISPCModel.FK_Building_Segment" FromRole="Building" ToRole="Segment" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Building" FromRole="Building" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="BU_Id" />
+          </Key>
+          <Property Name="BU_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BU_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Segment_Id" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Effect_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="ISPCModel.FK_BU_Project" FromRole="BusinessUnit" ToRole="Project" />
+          <NavigationProperty Name="Segment" Relationship="ISPCModel.FK_Segment_BU" FromRole="BusinessUnit" ToRole="Segment" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_BusinessUnit" FromRole="BusinessUnit" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Defect_Type">
+          <Key>
+            <PropertyRef Name="Defect_Type_Id" />
+          </Key>
+          <Property Name="Defect_Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Defect_Type_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="MachineBrandName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Machine_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AOI_Component" Relationship="ISPCModel.FK_Defect_Type_AOI_Component" FromRole="Defect_Type" ToRole="AOI_Component" />
+          <NavigationProperty Name="SPI_Pad" Relationship="ISPCModel.FK_Defect_Type_SPI_Pad" FromRole="Defect_Type" ToRole="SPI_Pad" />
+          <NavigationProperty Name="Machine_Type" Relationship="ISPCModel.FK_Machine_Type_Defect_Type" FromRole="Defect_Type" ToRole="Machine_Type" />
+        </EntityType>
+        <EntityType Name="Feeder">
+          <Key>
+            <PropertyRef Name="Feeder_Id" />
+          </Key>
+          <Property Name="Feeder_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AOI_Component" Relationship="ISPCModel.FK_Feeder_AOI_Component" FromRole="Feeder" ToRole="AOI_Component" />
+          <NavigationProperty Name="Station" Relationship="ISPCModel.FK_Station_Feeder" FromRole="Feeder" ToRole="Station" />
+        </EntityType>
+        <EntityType Name="Line">
+          <Key>
+            <PropertyRef Name="Line_Id" />
+          </Key>
+          <Property Name="Line_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Line_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Segment_Id" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Is_NPI" Type="Boolean" Nullable="false" />
+          <Property Name="Line_Location" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Effect_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Stations" Relationship="ISPCModel.FK_Line_Station" FromRole="Line" ToRole="Station" />
+          <NavigationProperty Name="Segment" Relationship="ISPCModel.FK_Segment_Line" FromRole="Line" ToRole="Segment" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Line" FromRole="Line" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="Machine_Id" />
+          </Key>
+          <Property Name="Machine_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Asset_Num" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Machine_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Machine_Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="Machine_Model_Id" Type="Int32" Nullable="false" />
+          <Property Name="Building_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Machine_Model" Relationship="ISPCModel.FK_Machine_Model_Machine" FromRole="Machine" ToRole="Machine_Model" />
+          <NavigationProperty Name="Stations" Relationship="ISPCModel.FK_Machine_Station" FromRole="Machine" ToRole="Station" />
+          <NavigationProperty Name="Machine_Status" Relationship="ISPCModel.FK_Machine_Status_Machine" FromRole="Machine" ToRole="Machine_Status" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Machine" FromRole="Machine" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Machine_Brand">
+          <Key>
+            <PropertyRef Name="Machine_Brand_Id" />
+          </Key>
+          <Property Name="Machine_Brand_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Brand_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Machine_Model" Relationship="ISPCModel.FK_Machine_Brand_Machine_Model" FromRole="Machine_Brand" ToRole="Machine_Model" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Machine_Brand" FromRole="Machine_Brand" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Machine_Model">
+          <Key>
+            <PropertyRef Name="Machine_Model_Id" />
+          </Key>
+          <Property Name="Machine_Model_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Brand_Id" Type="Int32" Nullable="false" />
+          <Property Name="Machine_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Machine_Model_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Machine_Picture_Url" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Machines" Relationship="ISPCModel.FK_Machine_Model_Machine" FromRole="Machine_Model" ToRole="Machine" />
+          <NavigationProperty Name="Machine_Brand" Relationship="ISPCModel.FK_Machine_Brand_Machine_Model" FromRole="Machine_Model" ToRole="Machine_Brand" />
+          <NavigationProperty Name="Machine_Type" Relationship="ISPCModel.FK_Machine_Type_Machine_Model" FromRole="Machine_Model" ToRole="Machine_Type" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Machine_Model" FromRole="Machine_Model" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Machine_Status">
+          <Key>
+            <PropertyRef Name="Machine_Status_Id" />
+          </Key>
+          <Property Name="Machine_Status_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Status1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Machines" Relationship="ISPCModel.FK_Machine_Status_Machine" FromRole="Machine_Status" ToRole="Machine" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Machine_Status" FromRole="Machine_Status" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Machine_Type">
+          <Key>
+            <PropertyRef Name="Machine_Type_Id" />
+          </Key>
+          <Property Name="Machine_Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Machine_Type_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Defect_Type" Relationship="ISPCModel.FK_Machine_Type_Defect_Type" FromRole="Machine_Type" ToRole="Defect_Type" />
+          <NavigationProperty Name="Machine_Model" Relationship="ISPCModel.FK_Machine_Type_Machine_Model" FromRole="Machine_Type" ToRole="Machine_Model" />
+          <NavigationProperty Name="Results" Relationship="ISPCModel.FK_Machine_Type_Result" FromRole="Machine_Type" ToRole="Result" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Machine_Type" FromRole="Machine_Type" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Model_Id" />
+          </Key>
+          <Property Name="Model_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model_Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Project_Id" Type="Int32" />
+          <Property Name="Components" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AOI_Panel" Relationship="ISPCModel.FK_Model_AOI_Panel" FromRole="Model" ToRole="AOI_Panel" />
+          <NavigationProperty Name="SPI_Panel" Relationship="ISPCModel.FK_Model_SPI_Panel" FromRole="Model" ToRole="SPI_Panel" />
+          <NavigationProperty Name="Project" Relationship="ISPCModel.FK_Project_Model" FromRole="Model" ToRole="Project" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Model" FromRole="Model" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Project_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Project_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Segment_Id" Type="Int32" Nullable="false" />
+          <Property Name="BU_Id" Type="Int32" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Effect_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="BusinessUnit" Relationship="ISPCModel.FK_BU_Project" FromRole="Project" ToRole="BusinessUnit" />
+          <NavigationProperty Name="Models" Relationship="ISPCModel.FK_Project_Model" FromRole="Project" ToRole="Model" />
+          <NavigationProperty Name="Segment" Relationship="ISPCModel.FK_Segment_Project" FromRole="Project" ToRole="Segment" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Project" FromRole="Project" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Repair_State_Result">
+          <Key>
+            <PropertyRef Name="Repair_State_Result_Id" />
+          </Key>
+          <Property Name="Repair_State_Result_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Repair_State_Result_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="Result_Id" />
+          </Key>
+          <Property Name="Result_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Result_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="MachineBrandName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Machine_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AOI_Board" Relationship="ISPCModel.FK_Result_AOI_Board" FromRole="Result" ToRole="AOI_Board" />
+          <NavigationProperty Name="AOI_Component" Relationship="ISPCModel.FK_Result_AOI_Component" FromRole="Result" ToRole="AOI_Component" />
+          <NavigationProperty Name="AOI_Panel" Relationship="ISPCModel.FK_Result_AOI_Panel" FromRole="Result" ToRole="AOI_Panel" />
+          <NavigationProperty Name="Machine_Type" Relationship="ISPCModel.FK_Machine_Type_Result" FromRole="Result" ToRole="Machine_Type" />
+          <NavigationProperty Name="SPI_Board" Relationship="ISPCModel.FK_Result_SPI_Board" FromRole="Result" ToRole="SPI_Board" />
+          <NavigationProperty Name="SPI_Panel" Relationship="ISPCModel.FK_Result_SPI_Panel" FromRole="Result" ToRole="SPI_Panel" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Result" FromRole="Result" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Segment">
+          <Key>
+            <PropertyRef Name="Segment_Id" />
+          </Key>
+          <Property Name="Segment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Segment_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Segment_Code" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Building_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Effect_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="ISPCModel.FK_Building_Segment" FromRole="Segment" ToRole="Building" />
+          <NavigationProperty Name="BusinessUnits" Relationship="ISPCModel.FK_Segment_BU" FromRole="Segment" ToRole="BusinessUnit" />
+          <NavigationProperty Name="Lines" Relationship="ISPCModel.FK_Segment_Line" FromRole="Segment" ToRole="Line" />
+          <NavigationProperty Name="Projects" Relationship="ISPCModel.FK_Segment_Project" FromRole="Segment" ToRole="Project" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Segment" FromRole="Segment" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="SPI_Board">
+          <Key>
+            <PropertyRef Name="Board_Id" />
+          </Key>
+          <Property Name="Board_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Panel_Id" Type="Int32" Nullable="false" />
+          <Property Name="Board_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Board_Barcode" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Result_Id" Type="Int32" />
+          <Property Name="TotalPads_Num" Type="Int32" Nullable="false" />
+          <Property Name="ErrorPads_Num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Result" Relationship="ISPCModel.FK_Result_SPI_Board" FromRole="SPI_Board" ToRole="Result" />
+          <NavigationProperty Name="SPI_Pad" Relationship="ISPCModel.FK_SPI_Board_SPI_Pad" FromRole="SPI_Board" ToRole="SPI_Pad" />
+          <NavigationProperty Name="SPI_Panel" Relationship="ISPCModel.FK_SPI_Panel_SPI_Board" FromRole="SPI_Board" ToRole="SPI_Panel" />
+        </EntityType>
+        <EntityType Name="SPI_Pad">
+          <Key>
+            <PropertyRef Name="Pad_Id" />
+          </Key>
+          <Property Name="Pad_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Board_Id" Type="Int32" Nullable="false" />
+          <Property Name="Component_Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Defect_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="Real_Area" Type="Double" />
+          <Property Name="Area" Type="Double" />
+          <Property Name="Real_Volume" Type="Double" />
+          <Property Name="Volume" Type="Double" />
+          <Property Name="Offset_X" Type="Double" />
+          <Property Name="Offset_Y" Type="Double" />
+          <Property Name="Position_X" Type="Double" />
+          <Property Name="Position_Y" Type="Double" />
+          <Property Name="Pad_X" Type="Double" />
+          <Property Name="Pad_Y" Type="Double" />
+          <NavigationProperty Name="Defect_Type" Relationship="ISPCModel.FK_Defect_Type_SPI_Pad" FromRole="SPI_Pad" ToRole="Defect_Type" />
+          <NavigationProperty Name="SPI_Board" Relationship="ISPCModel.FK_SPI_Board_SPI_Pad" FromRole="SPI_Pad" ToRole="SPI_Board" />
+        </EntityType>
+        <EntityType Name="SPI_Panel">
+          <Key>
+            <PropertyRef Name="Panel_Id" />
+          </Key>
+          <Property Name="Panel_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Id" Type="Int32" Nullable="false" />
+          <Property Name="Model_Id" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Operator_Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Panel_Barcode" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Total_Pads_Num" Type="Int32" Nullable="false" />
+          <Property Name="Error_Pads_Num" Type="Int32" Nullable="false" />
+          <Property Name="Squeegee" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Start_Time" Type="DateTime" Nullable="false" />
+          <Property Name="End_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Cycle_Time" Type="Double" Nullable="false" />
+          <Property Name="Result_Id" Type="Int32" Nullable="false" />
+          <Property Name="Volume_Avg" Type="Double" Nullable="false" />
+          <Property Name="Height_Avg" Type="Double" Nullable="false" />
+          <Property Name="Area_Avg" Type="Double" Nullable="false" />
+          <Property Name="Timespan" Type="DateTime" Nullable="false" />
+          <Property Name="Cp" Type="Double" />
+          <Property Name="Cpk" Type="Double" />
+          <NavigationProperty Name="Model" Relationship="ISPCModel.FK_Model_SPI_Panel" FromRole="SPI_Panel" ToRole="Model" />
+          <NavigationProperty Name="Result" Relationship="ISPCModel.FK_Result_SPI_Panel" FromRole="SPI_Panel" ToRole="Result" />
+          <NavigationProperty Name="SPI_Board" Relationship="ISPCModel.FK_SPI_Panel_SPI_Board" FromRole="SPI_Panel" ToRole="SPI_Board" />
+          <NavigationProperty Name="Station" Relationship="ISPCModel.FK_Station_SPI_Panel" FromRole="SPI_Panel" ToRole="Station" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="Station_Id" />
+          </Key>
+          <Property Name="Station_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StationComputerAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Machine_Id" Type="Int32" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Line_Id" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="Creator_Id" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Effect_Time" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AOI_Panel" Relationship="ISPCModel.FK_Station_AOI_Panel" FromRole="Station" ToRole="AOI_Panel" />
+          <NavigationProperty Name="Feeders" Relationship="ISPCModel.FK_Station_Feeder" FromRole="Station" ToRole="Feeder" />
+          <NavigationProperty Name="Line" Relationship="ISPCModel.FK_Line_Station" FromRole="Station" ToRole="Line" />
+          <NavigationProperty Name="Machine" Relationship="ISPCModel.FK_Machine_Station" FromRole="Station" ToRole="Machine" />
+          <NavigationProperty Name="SPI_Panel" Relationship="ISPCModel.FK_Station_SPI_Panel" FromRole="Station" ToRole="SPI_Panel" />
+          <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Station" FromRole="Station" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Buildings" Relationship="ISPCModel.FK_UserProfile_Building" FromRole="UserProfile" ToRole="Building" />
+          <NavigationProperty Name="BusinessUnits" Relationship="ISPCModel.FK_UserProfile_BusinessUnit" FromRole="UserProfile" ToRole="BusinessUnit" />
+          <NavigationProperty Name="Lines" Relationship="ISPCModel.FK_UserProfile_Line" FromRole="UserProfile" ToRole="Line" />
+          <NavigationProperty Name="Machines" Relationship="ISPCModel.FK_UserProfile_Machine" FromRole="UserProfile" ToRole="Machine" />
+          <NavigationProperty Name="Machine_Brand" Relationship="ISPCModel.FK_UserProfile_Machine_Brand" FromRole="UserProfile" ToRole="Machine_Brand" />
+          <NavigationProperty Name="Machine_Model" Relationship="ISPCModel.FK_UserProfile_Machine_Model" FromRole="UserProfile" ToRole="Machine_Model" />
+          <NavigationProperty Name="Machine_Status" Relationship="ISPCModel.FK_UserProfile_Machine_Status" FromRole="UserProfile" ToRole="Machine_Status" />
+          <NavigationProperty Name="Machine_Type" Relationship="ISPCModel.FK_UserProfile_Machine_Type" FromRole="UserProfile" ToRole="Machine_Type" />
+          <NavigationProperty Name="Models" Relationship="ISPCModel.FK_UserProfile_Model" FromRole="UserProfile" ToRole="Model" />
+          <NavigationProperty Name="Projects" Relationship="ISPCModel.FK_UserProfile_Project" FromRole="UserProfile" ToRole="Project" />
+          <NavigationProperty Name="Results" Relationship="ISPCModel.FK_UserProfile_Result" FromRole="UserProfile" ToRole="Result" />
+          <NavigationProperty Name="Segments" Relationship="ISPCModel.FK_UserProfile_Segment" FromRole="UserProfile" ToRole="Segment" />
+          <NavigationProperty Name="Stations" Relationship="ISPCModel.FK_UserProfile_Station" FromRole="UserProfile" ToRole="Station" />
+          <NavigationProperty Name="webpages_Roles" Relationship="ISPCModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="ISPCModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_AOI_Board_AOI_Component">
+          <End Role="AOI_Board" Type="ISPCModel.AOI_Board" Multiplicity="1" />
+          <End Role="AOI_Component" Type="ISPCModel.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AOI_Board">
+              <PropertyRef Name="Board_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Board_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AOI_Panel_AOI_Board">
+          <End Role="AOI_Panel" Type="ISPCModel.AOI_Panel" Multiplicity="1" />
+          <End Role="AOI_Board" Type="ISPCModel.AOI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AOI_Panel">
+              <PropertyRef Name="Panel_Id" />
+            </Principal>
+            <Dependent Role="AOI_Board">
+              <PropertyRef Name="Panel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_AOI_Board">
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="1" />
+          <End Role="AOI_Board" Type="ISPCModel.AOI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="AOI_Board">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Type_AOI_Component">
+          <End Role="Defect_Type" Type="ISPCModel.Defect_Type" Multiplicity="1" />
+          <End Role="AOI_Component" Type="ISPCModel.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defect_Type">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feeder_AOI_Component">
+          <End Role="Feeder" Type="ISPCModel.Feeder" Multiplicity="0..1" />
+          <End Role="AOI_Component" Type="ISPCModel.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feeder">
+              <PropertyRef Name="Feeder_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Feeder_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_AOI_Component">
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="1" />
+          <End Role="AOI_Component" Type="ISPCModel.AOI_Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="AOI_Component">
+              <PropertyRef Name="Repair_State_Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_AOI_Panel">
+          <End Role="Model" Type="ISPCModel.Model" Multiplicity="1" />
+          <End Role="AOI_Panel" Type="ISPCModel.AOI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Model_Id" />
+            </Principal>
+            <Dependent Role="AOI_Panel">
+              <PropertyRef Name="Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_AOI_Panel">
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="1" />
+          <End Role="AOI_Panel" Type="ISPCModel.AOI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="AOI_Panel">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_AOI_Panel">
+          <End Role="Station" Type="ISPCModel.Station" Multiplicity="1" />
+          <End Role="AOI_Panel" Type="ISPCModel.AOI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Station_Id" />
+            </Principal>
+            <Dependent Role="AOI_Panel">
+              <PropertyRef Name="Station_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Building_Segment">
+          <End Role="Building" Type="ISPCModel.Building" Multiplicity="1" />
+          <End Role="Segment" Type="ISPCModel.Segment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Building_Id" />
+            </Principal>
+            <Dependent Role="Segment">
+              <PropertyRef Name="Building_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Building">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Building" Type="ISPCModel.Building" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Building">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BU_Project">
+          <End Role="BusinessUnit" Type="ISPCModel.BusinessUnit" Multiplicity="0..1" />
+          <End Role="Project" Type="ISPCModel.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnit">
+              <PropertyRef Name="BU_Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="BU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segment_BU">
+          <End Role="Segment" Type="ISPCModel.Segment" Multiplicity="1" />
+          <End Role="BusinessUnit" Type="ISPCModel.BusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segment">
+              <PropertyRef Name="Segment_Id" />
+            </Principal>
+            <Dependent Role="BusinessUnit">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_BusinessUnit">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="BusinessUnit" Type="ISPCModel.BusinessUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BusinessUnit">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Type_SPI_Pad">
+          <End Role="Defect_Type" Type="ISPCModel.Defect_Type" Multiplicity="1" />
+          <End Role="SPI_Pad" Type="ISPCModel.SPI_Pad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defect_Type">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Principal>
+            <Dependent Role="SPI_Pad">
+              <PropertyRef Name="Defect_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Type_Defect_Type">
+          <End Role="Machine_Type" Type="ISPCModel.Machine_Type" Multiplicity="1" />
+          <End Role="Defect_Type" Type="ISPCModel.Defect_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Principal>
+            <Dependent Role="Defect_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_Feeder">
+          <End Role="Station" Type="ISPCModel.Station" Multiplicity="1" />
+          <End Role="Feeder" Type="ISPCModel.Feeder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Station_Id" />
+            </Principal>
+            <Dependent Role="Feeder">
+              <PropertyRef Name="Station_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Line_Station">
+          <End Role="Line" Type="ISPCModel.Line" Multiplicity="1" />
+          <End Role="Station" Type="ISPCModel.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Line">
+              <PropertyRef Name="Line_Id" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="Line_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segment_Line">
+          <End Role="Segment" Type="ISPCModel.Segment" Multiplicity="1" />
+          <End Role="Line" Type="ISPCModel.Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segment">
+              <PropertyRef Name="Segment_Id" />
+            </Principal>
+            <Dependent Role="Line">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Line">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Line" Type="ISPCModel.Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Line">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Model_Machine">
+          <End Role="Machine_Model" Type="ISPCModel.Machine_Model" Multiplicity="1" />
+          <End Role="Machine" Type="ISPCModel.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Model">
+              <PropertyRef Name="Machine_Model_Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="Machine_Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Station">
+          <End Role="Machine" Type="ISPCModel.Machine" Multiplicity="0..1" />
+          <End Role="Station" Type="ISPCModel.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine">
+              <PropertyRef Name="Machine_Id" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="Machine_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Status_Machine">
+          <End Role="Machine_Status" Type="ISPCModel.Machine_Status" Multiplicity="1" />
+          <End Role="Machine" Type="ISPCModel.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Status">
+              <PropertyRef Name="Machine_Status_Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="Machine_Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Machine" Type="ISPCModel.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Brand_Machine_Model">
+          <End Role="Machine_Brand" Type="ISPCModel.Machine_Brand" Multiplicity="1" />
+          <End Role="Machine_Model" Type="ISPCModel.Machine_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Brand">
+              <PropertyRef Name="Machine_Brand_Id" />
+            </Principal>
+            <Dependent Role="Machine_Model">
+              <PropertyRef Name="Machine_Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Brand">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Brand" Type="ISPCModel.Machine_Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Brand">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Type_Machine_Model">
+          <End Role="Machine_Type" Type="ISPCModel.Machine_Type" Multiplicity="1" />
+          <End Role="Machine_Model" Type="ISPCModel.Machine_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Principal>
+            <Dependent Role="Machine_Model">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Model">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Model" Type="ISPCModel.Machine_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Model">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Status">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Status" Type="ISPCModel.Machine_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Status">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_Type_Result">
+          <End Role="Machine_Type" Type="ISPCModel.Machine_Type" Multiplicity="1" />
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Type">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="Machine_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Machine_Type">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Machine_Type" Type="ISPCModel.Machine_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Machine_Type">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_SPI_Panel">
+          <End Role="Model" Type="ISPCModel.Model" Multiplicity="1" />
+          <End Role="SPI_Panel" Type="ISPCModel.SPI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Model_Id" />
+            </Principal>
+            <Dependent Role="SPI_Panel">
+              <PropertyRef Name="Model_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Model">
+          <End Role="Project" Type="ISPCModel.Project" Multiplicity="0..1" />
+          <End Role="Model" Type="ISPCModel.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Model">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Model" Type="ISPCModel.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Segment_Project">
+          <End Role="Segment" Type="ISPCModel.Segment" Multiplicity="1" />
+          <End Role="Project" Type="ISPCModel.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segment">
+              <PropertyRef Name="Segment_Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Project">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Project" Type="ISPCModel.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_SPI_Board">
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="0..1" />
+          <End Role="SPI_Board" Type="ISPCModel.SPI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="SPI_Board">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_SPI_Panel">
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="1" />
+          <End Role="SPI_Panel" Type="ISPCModel.SPI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Result_Id" />
+            </Principal>
+            <Dependent Role="SPI_Panel">
+              <PropertyRef Name="Result_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Result">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Result" Type="ISPCModel.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Segment">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Segment" Type="ISPCModel.Segment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Segment">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPI_Board_SPI_Pad">
+          <End Role="SPI_Board" Type="ISPCModel.SPI_Board" Multiplicity="1" />
+          <End Role="SPI_Pad" Type="ISPCModel.SPI_Pad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPI_Board">
+              <PropertyRef Name="Board_Id" />
+            </Principal>
+            <Dependent Role="SPI_Pad">
+              <PropertyRef Name="Board_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPI_Panel_SPI_Board">
+          <End Role="SPI_Panel" Type="ISPCModel.SPI_Panel" Multiplicity="1" />
+          <End Role="SPI_Board" Type="ISPCModel.SPI_Board" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPI_Panel">
+              <PropertyRef Name="Panel_Id" />
+            </Principal>
+            <Dependent Role="SPI_Board">
+              <PropertyRef Name="Panel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_SPI_Panel">
+          <End Role="Station" Type="ISPCModel.Station" Multiplicity="1" />
+          <End Role="SPI_Panel" Type="ISPCModel.SPI_Panel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Station_Id" />
+            </Principal>
+            <Dependent Role="SPI_Panel">
+              <PropertyRef Name="Station_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Station">
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="1" />
+          <End Role="Station" Type="ISPCModel.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="Creator_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="ISPCModel.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="ISPCModel.UserProfile" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ISPCModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AOI_Board">
+            <EntityTypeMapping TypeName="ISPCModel.AOI_Board">
+              <MappingFragment StoreEntitySet="AOI_Board">
+                <ScalarProperty Name="Board_Id" ColumnName="Board_Id" />
+                <ScalarProperty Name="Panel_Id" ColumnName="Panel_Id" />
+                <ScalarProperty Name="Board_Barcode" ColumnName="Board_Barcode" />
+                <ScalarProperty Name="Result_Id" ColumnName="Result_Id" />
+                <ScalarProperty Name="Total_Comps_Num" ColumnName="Total_Comps_Num" />
+                <ScalarProperty Name="Total_Pins_Num" ColumnName="Total_Pins_Num" />
+                <ScalarProperty Name="Indict_Comps_Num" ColumnName="Indict_Comps_Num" />
+                <ScalarProperty Name="Indict_Pins_Num" ColumnName="Indict_Pins_Num" />
+                <ScalarProperty Name="Defect_Num" ColumnName="Defect_Num" />
+                <ScalarProperty Name="Active_Defect_Num" ColumnName="Active_Defect_Num" />
+                <ScalarProperty Name="Active_Pins_Num" ColumnName="Active_Pins_Num" />
+                <ScalarProperty Name="Active_Comps_Num" ColumnName="Active_Comps_Num" />
+                <ScalarProperty Name="FalseCall_Defect_Num" ColumnName="FalseCall_Defect_Num" />
+                <ScalarProperty Name="FalseCall_Pins_Num" ColumnName="FalseCall_Pins_Num" />
+                <ScalarProperty Name="FalseCall_Comps_Num" ColumnName="FalseCall_Comps_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AOI_Component">
+            <EntityTypeMapping TypeName="ISPCModel.AOI_Component">
+              <MappingFragment StoreEntitySet="AOI_Component">
+                <ScalarProperty Name="Component_Id" ColumnName="Component_Id" />
+                <ScalarProperty Name="Board_Id" ColumnName="Board_Id" />
+                <ScalarProperty Name="Component_Name" ColumnName="Component_Name" />
+                <ScalarProperty Name="Defect_Type_Id" ColumnName="Defect_Type_Id" />
+                <ScalarProperty Name="Repair_State_Result_Id" ColumnName="Repair_State_Result_Id" />
+                <ScalarProperty Name="Algorithm" ColumnName="Algorithm" />
+                <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+                <ScalarProperty Name="Feeder_Id" ColumnName="Feeder_Id" />
+                <ScalarProperty Name="RemarkDefectType" ColumnName="RemarkDefectType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AOI_Panel">
+            <EntityTypeMapping TypeName="ISPCModel.AOI_Panel">
+              <MappingFragment StoreEntitySet="AOI_Panel">
+                <ScalarProperty Name="Panel_Id" ColumnName="Panel_Id" />
+                <ScalarProperty Name="Station_Id" ColumnName="Station_Id" />
+                <ScalarProperty Name="Panel_Barcode" ColumnName="Panel_Barcode" />
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="Cycle_Time" ColumnName="Cycle_Time" />
+                <ScalarProperty Name="Result_Id" ColumnName="Result_Id" />
+                <ScalarProperty Name="Operator_Name" ColumnName="Operator_Name" />
+                <ScalarProperty Name="Total_Comps_Num" ColumnName="Total_Comps_Num" />
+                <ScalarProperty Name="Total_Pins_Num" ColumnName="Total_Pins_Num" />
+                <ScalarProperty Name="Indict_Comps_Num" ColumnName="Indict_Comps_Num" />
+                <ScalarProperty Name="Indict_Pins_Num" ColumnName="Indict_Pins_Num" />
+                <ScalarProperty Name="Defect_Num" ColumnName="Defect_Num" />
+                <ScalarProperty Name="Active_Defect_Num" ColumnName="Active_Defect_Num" />
+                <ScalarProperty Name="Active_Pins_Num" ColumnName="Active_Pins_Num" />
+                <ScalarProperty Name="Active_Comps_Num" ColumnName="Active_Comps_Num" />
+                <ScalarProperty Name="FalseCall_Defect_Num" ColumnName="FalseCall_Defect_Num" />
+                <ScalarProperty Name="FalseCall_Pins_Num" ColumnName="FalseCall_Pins_Num" />
+                <ScalarProperty Name="FalseCall_Comps_Num" ColumnName="FalseCall_Comps_Num" />
+                <ScalarProperty Name="Timespan" ColumnName="Timespan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="ISPCModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="Building_Id" ColumnName="Building_Id" />
+                <ScalarProperty Name="Building_Name" ColumnName="Building_Name" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessUnits">
+            <EntityTypeMapping TypeName="ISPCModel.BusinessUnit">
+              <MappingFragment StoreEntitySet="BusinessUnit">
+                <ScalarProperty Name="BU_Id" ColumnName="BU_Id" />
+                <ScalarProperty Name="BU_Name" ColumnName="BU_Name" />
+                <ScalarProperty Name="Segment_Id" ColumnName="Segment_Id" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defect_Type">
+            <EntityTypeMapping TypeName="ISPCModel.Defect_Type">
+              <MappingFragment StoreEntitySet="Defect_Type">
+                <ScalarProperty Name="Defect_Type_Id" ColumnName="Defect_Type_Id" />
+                <ScalarProperty Name="Defect_Type_Name" ColumnName="Defect_Type_Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MachineBrandName" ColumnName="MachineBrandName" />
+                <ScalarProperty Name="Machine_Type_Id" ColumnName="Machine_Type_Id" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feeders">
+            <EntityTypeMapping TypeName="ISPCModel.Feeder">
+              <MappingFragment StoreEntitySet="Feeder">
+                <ScalarProperty Name="Feeder_Id" ColumnName="Feeder_Id" />
+                <ScalarProperty Name="Station_Id" ColumnName="Station_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lines">
+            <EntityTypeMapping TypeName="ISPCModel.Line">
+              <MappingFragment StoreEntitySet="Line">
+                <ScalarProperty Name="Line_Id" ColumnName="Line_Id" />
+                <ScalarProperty Name="Line_Name" ColumnName="Line_Name" />
+                <ScalarProperty Name="Segment_Id" ColumnName="Segment_Id" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Is_NPI" ColumnName="Is_NPI" />
+                <ScalarProperty Name="Line_Location" ColumnName="Line_Location" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machines">
+            <EntityTypeMapping TypeName="ISPCModel.Machine">
+              <MappingFragment StoreEntitySet="Machine">
+                <ScalarProperty Name="Machine_Id" ColumnName="Machine_Id" />
+                <ScalarProperty Name="Machine_Asset_Num" ColumnName="Machine_Asset_Num" />
+                <ScalarProperty Name="Machine_Name" ColumnName="Machine_Name" />
+                <ScalarProperty Name="Machine_Status_Id" ColumnName="Machine_Status_Id" />
+                <ScalarProperty Name="Machine_Model_Id" ColumnName="Machine_Model_Id" />
+                <ScalarProperty Name="Building_Id" ColumnName="Building_Id" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machine_Brand">
+            <EntityTypeMapping TypeName="ISPCModel.Machine_Brand">
+              <MappingFragment StoreEntitySet="Machine_Brand">
+                <ScalarProperty Name="Machine_Brand_Id" ColumnName="Machine_Brand_Id" />
+                <ScalarProperty Name="Machine_Brand_Name" ColumnName="Machine_Brand_Name" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machine_Model">
+            <EntityTypeMapping TypeName="ISPCModel.Machine_Model">
+              <MappingFragment StoreEntitySet="Machine_Model">
+                <ScalarProperty Name="Machine_Model_Id" ColumnName="Machine_Model_Id" />
+                <ScalarProperty Name="Machine_Brand_Id" ColumnName="Machine_Brand_Id" />
+                <ScalarProperty Name="Machine_Type_Id" ColumnName="Machine_Type_Id" />
+                <ScalarProperty Name="Machine_Model_Name" ColumnName="Machine_Model_Name" />
+                <ScalarProperty Name="Machine_Picture_Url" ColumnName="Machine_Picture_Url" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machine_Status">
+            <EntityTypeMapping TypeName="ISPCModel.Machine_Status">
+              <MappingFragment StoreEntitySet="Machine_Status">
+                <ScalarProperty Name="Machine_Status_Id" ColumnName="Machine_Status_Id" />
+                <ScalarProperty Name="Machine_Status1" ColumnName="Machine_Status" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machine_Type">
+            <EntityTypeMapping TypeName="ISPCModel.Machine_Type">
+              <MappingFragment StoreEntitySet="Machine_Type">
+                <ScalarProperty Name="Machine_Type_Id" ColumnName="Machine_Type_Id" />
+                <ScalarProperty Name="Machine_Type_Name" ColumnName="Machine_Type_Name" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="ISPCModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+                <ScalarProperty Name="Components" ColumnName="Components" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="ISPCModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+                <ScalarProperty Name="Project_Name" ColumnName="Project_Name" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Segment_Id" ColumnName="Segment_Id" />
+                <ScalarProperty Name="BU_Id" ColumnName="BU_Id" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repair_State_Result">
+            <EntityTypeMapping TypeName="ISPCModel.Repair_State_Result">
+              <MappingFragment StoreEntitySet="Repair_State_Result">
+                <ScalarProperty Name="Repair_State_Result_Id" ColumnName="Repair_State_Result_Id" />
+                <ScalarProperty Name="Repair_State_Result_Name" ColumnName="Repair_State_Result_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="ISPCModel.Result">
+              <MappingFragment StoreEntitySet="Result">
+                <ScalarProperty Name="Result_Id" ColumnName="Result_Id" />
+                <ScalarProperty Name="Result_Name" ColumnName="Result_Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MachineBrandName" ColumnName="MachineBrandName" />
+                <ScalarProperty Name="Machine_Type_Id" ColumnName="Machine_Type_Id" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Segments">
+            <EntityTypeMapping TypeName="ISPCModel.Segment">
+              <MappingFragment StoreEntitySet="Segment">
+                <ScalarProperty Name="Segment_Id" ColumnName="Segment_Id" />
+                <ScalarProperty Name="Segment_Name" ColumnName="Segment_Name" />
+                <ScalarProperty Name="Segment_Code" ColumnName="Segment_Code" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Building_Id" ColumnName="Building_Id" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPI_Board">
+            <EntityTypeMapping TypeName="ISPCModel.SPI_Board">
+              <MappingFragment StoreEntitySet="SPI_Board">
+                <ScalarProperty Name="Board_Id" ColumnName="Board_Id" />
+                <ScalarProperty Name="Panel_Id" ColumnName="Panel_Id" />
+                <ScalarProperty Name="Board_Name" ColumnName="Board_Name" />
+                <ScalarProperty Name="Board_Barcode" ColumnName="Board_Barcode" />
+                <ScalarProperty Name="Result_Id" ColumnName="Result_Id" />
+                <ScalarProperty Name="TotalPads_Num" ColumnName="TotalPads_Num" />
+                <ScalarProperty Name="ErrorPads_Num" ColumnName="ErrorPads_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPI_Pad">
+            <EntityTypeMapping TypeName="ISPCModel.SPI_Pad">
+              <MappingFragment StoreEntitySet="SPI_Pad">
+                <ScalarProperty Name="Pad_Id" ColumnName="Pad_Id" />
+                <ScalarProperty Name="Board_Id" ColumnName="Board_Id" />
+                <ScalarProperty Name="Component_Name" ColumnName="Component_Name" />
+                <ScalarProperty Name="Defect_Type_Id" ColumnName="Defect_Type_Id" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Real_Area" ColumnName="Real_Area" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Real_Volume" ColumnName="Real_Volume" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Offset_X" ColumnName="Offset_X" />
+                <ScalarProperty Name="Offset_Y" ColumnName="Offset_Y" />
+                <ScalarProperty Name="Position_X" ColumnName="Position_X" />
+                <ScalarProperty Name="Position_Y" ColumnName="Position_Y" />
+                <ScalarProperty Name="Pad_X" ColumnName="Pad_X" />
+                <ScalarProperty Name="Pad_Y" ColumnName="Pad_Y" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPI_Panel">
+            <EntityTypeMapping TypeName="ISPCModel.SPI_Panel">
+              <MappingFragment StoreEntitySet="SPI_Panel">
+                <ScalarProperty Name="Panel_Id" ColumnName="Panel_Id" />
+                <ScalarProperty Name="Station_Id" ColumnName="Station_Id" />
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Operator_Name" ColumnName="Operator_Name" />
+                <ScalarProperty Name="Panel_Barcode" ColumnName="Panel_Barcode" />
+                <ScalarProperty Name="Total_Pads_Num" ColumnName="Total_Pads_Num" />
+                <ScalarProperty Name="Error_Pads_Num" ColumnName="Error_Pads_Num" />
+                <ScalarProperty Name="Squeegee" ColumnName="Squeegee" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="Cycle_Time" ColumnName="Cycle_Time" />
+                <ScalarProperty Name="Result_Id" ColumnName="Result_Id" />
+                <ScalarProperty Name="Volume_Avg" ColumnName="Volume_Avg" />
+                <ScalarProperty Name="Height_Avg" ColumnName="Height_Avg" />
+                <ScalarProperty Name="Area_Avg" ColumnName="Area_Avg" />
+                <ScalarProperty Name="Timespan" ColumnName="Timespan" />
+                <ScalarProperty Name="Cp" ColumnName="Cp" />
+                <ScalarProperty Name="Cpk" ColumnName="Cpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stations">
+            <EntityTypeMapping TypeName="ISPCModel.Station">
+              <MappingFragment StoreEntitySet="Station">
+                <ScalarProperty Name="Station_Id" ColumnName="Station_Id" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="StationComputerAddress" ColumnName="StationComputerAddress" />
+                <ScalarProperty Name="Machine_Id" ColumnName="Machine_Id" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Line_Id" ColumnName="Line_Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+                <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="ISPCModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="ISPCModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="ISPCModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="ISPCModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="ISPCModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ISPC">
+        <EntityTypeShape EntityType="ISPCModel.AOI_Board" Width="1.5" PointX="24.75" PointY="24.5" Height="4.480205078124996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.AOI_Component" Width="1.5" PointX="30" PointY="25.625" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.AOI_Panel" Width="1.5" PointX="19.5" PointY="22.125" Height="5.8263151041666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Building" Width="1.5" PointX="5.25" PointY="14.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.BusinessUnit" Width="1.5" PointX="9.75" PointY="18.25" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Defect_Type" Width="1.5" PointX="7.5" PointY="27.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Feeder" Width="1.5" PointX="17.25" PointY="23.375" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Line" Width="1.5" PointX="12.75" PointY="18" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Machine" Width="1.5" PointX="7.5" PointY="21.125" Height="3.326396484374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Machine_Brand" Width="1.5" PointX="5.25" PointY="21.875" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Machine_Model" Width="1.5" PointX="10.5" PointY="23" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Machine_Status" Width="1.5" PointX="5.25" PointY="24.875" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Machine_Type" Width="1.5" PointX="5.25" PointY="28" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Model" Width="1.5" PointX="17.25" PointY="18.75" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Project" Width="1.5" PointX="15" PointY="18" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Repair_State_Result" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Result" Width="1.5" PointX="10.5" PointY="27.625" Height="3.7109993489583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Segment" Width="1.5" PointX="7.5" PointY="16.75" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.SPI_Board" Width="1.5" PointX="27.75" PointY="25.375" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.SPI_Pad" Width="1.5" PointX="33" PointY="25.875" Height="4.2879036458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.SPI_Panel" Width="1.5" PointX="22.5" PointY="22.375" Height="5.4417122395833246" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.Station" Width="1.5" PointX="15" PointY="22.25" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.UserProfile" Width="1.5" PointX="3" PointY="18.5" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.webpages_Membership" Width="1.5" PointX="2.75" PointY="0.75" Height="3.1340950520833246" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.webpages_OAuthMembership" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISPCModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="19.75" Height="1.595683593749996" IsExpanded="true" />
+        <AssociationConnector Association="ISPCModel.FK_AOI_Board_AOI_Component" ManuallyRouted="false">
+          <ConnectorPoint PointX="26.25" PointY="28.679749348958332" />
+          <ConnectorPoint PointX="28.416666666666668" PointY="28.679749348958332" />
+          <ConnectorPoint PointX="28.583333333333332" PointY="28.679749348958332" />
+          <ConnectorPoint PointX="29.541666666666668" PointY="28.679749348958332" />
+          <ConnectorPoint PointX="29.708333333333332" PointY="28.679749348958332" />
+          <ConnectorPoint PointX="30" PointY="28.679749348958332" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_AOI_Panel_AOI_Board" ManuallyRouted="false">
+          <ConnectorPoint PointX="21" PointY="27.915263671874996" />
+          <ConnectorPoint PointX="23.166666666666668" PointY="27.915263671874996" />
+          <ConnectorPoint PointX="23.333333333333332" PointY="27.915263671874996" />
+          <ConnectorPoint PointX="24.75" PointY="27.915263671874996" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Result_AOI_Board" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="17.916666666666668" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="18.083333333333332" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="18.916666666666668" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="19.083333333333332" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="19.166666666666668" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="19.333333333333332" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="23.166666666666668" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="23.333333333333332" PointY="28.510234374999996" />
+          <ConnectorPoint PointX="24.75" PointY="28.510234374999996" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Defect_Type_AOI_Component" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.25" PointY="27.75" />
+          <ConnectorPoint PointX="8.25" PointY="27.375" />
+          <ConnectorPoint PointX="8.5729186666666664" PointY="27.375" />
+          <ConnectorPoint PointX="8.7395853333333342" PointY="27.375" />
+          <ConnectorPoint PointX="17.916666666666668" PointY="27.375" />
+          <ConnectorPoint PointX="18.083333333333332" PointY="27.375" />
+          <ConnectorPoint PointX="18.916666666666668" PointY="27.375" />
+          <ConnectorPoint PointX="19.083333333333332" PointY="27.375" />
+          <ConnectorPoint PointX="19.25" PointY="27.375" />
+          <ConnectorPoint PointX="19.25" PointY="29.230205078124996" />
+          <ConnectorPoint PointX="23.166666666666668" PointY="29.230205078124996" />
+          <ConnectorPoint PointX="23.333333333333332" PointY="29.230205078124996" />
+          <ConnectorPoint PointX="28.416666666666668" PointY="29.230205078124996" />
+          <ConnectorPoint PointX="28.583333333333332" PointY="29.230205078124996" />
+          <ConnectorPoint PointX="29.625" PointY="29.230205078124996" />
+          <ConnectorPoint PointX="29.625" PointY="27.121122674479167" />
+          <ConnectorPoint PointX="30" PointY="27.121122674479167" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Feeder_AOI_Component" ManuallyRouted="false">
+          <ConnectorPoint PointX="18" PointY="25.162985026041667" />
+          <ConnectorPoint PointX="18" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="18.916666666666668" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="19.083333333333332" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="19.166666666666668" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="19.333333333333332" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="23.166666666666668" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="23.333333333333332" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="28.416666666666668" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="28.583333333333332" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="29.541666666666668" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="29.708333333333332" PointY="29.093201497395832" />
+          <ConnectorPoint PointX="30" PointY="29.093201497395832" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Result_AOI_Component" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="30.283102213541667" />
+          <ConnectorPoint PointX="28.416666666666668" PointY="30.283102213541667" />
+          <ConnectorPoint PointX="28.583333333333332" PointY="30.283102213541667" />
+          <ConnectorPoint PointX="30.75" PointY="30.283102213541667" />
+          <ConnectorPoint PointX="30.75" PointY="29.143697916666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Model_AOI_Panel" ManuallyRouted="false">
+          <ConnectorPoint PointX="18.75" PointY="20.317047526041669" />
+          <ConnectorPoint PointX="20.25" PointY="20.317047526041669" />
+          <ConnectorPoint PointX="20.25" PointY="22.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Result_AOI_Panel" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="17.916666666666668" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="18.083333333333332" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="18.916666666666668" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="19.083333333333332" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="19.166666666666668" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="19.333333333333332" PointY="27.788157552083334" />
+          <ConnectorPoint PointX="19.5" PointY="27.788157552083334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Station_AOI_Panel" ManuallyRouted="false">
+          <ConnectorPoint PointX="16.5" PointY="25.785543619791667" />
+          <ConnectorPoint PointX="17.916666666666668" PointY="25.785543619791667" />
+          <ConnectorPoint PointX="18.083333333333332" PointY="25.785543619791667" />
+          <ConnectorPoint PointX="19.5" PointY="25.785543619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Building_Segment" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="16.903595377604166" />
+          <ConnectorPoint PointX="7.5" PointY="16.903595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Building" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="18.5" />
+          <ConnectorPoint PointX="3.75" PointY="15.778595377604166" />
+          <ConnectorPoint PointX="5.25" PointY="15.778595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_BU_Project" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="21.191793619791667" />
+          <ConnectorPoint PointX="11.625" PointY="21.566793619791667" />
+          <ConnectorPoint PointX="11.625" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="14.625" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="15" PointY="21.326396484375003" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Segment_BU" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="19.259348958333334" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="19.259348958333334" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="19.259348958333334" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="19.259348958333334" />
+          <ConnectorPoint PointX="9.5833333333333339" PointY="19.259348958333334" />
+          <ConnectorPoint PointX="9.75" PointY="19.259348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_BusinessUnit" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.696848958333334" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="20.696848958333334" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="20.696848958333334" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="20.696848958333334" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="20.696848958333334" />
+          <ConnectorPoint PointX="9.75" PointY="20.696848958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Defect_Type_SPI_Pad" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.656252" PointY="27.75" />
+          <ConnectorPoint PointX="8.656252" PointY="27.125" />
+          <ConnectorPoint PointX="17.916666666666668" PointY="27.125" />
+          <ConnectorPoint PointX="18.083333333333332" PointY="27.125" />
+          <ConnectorPoint PointX="19" PointY="27.125" />
+          <ConnectorPoint PointX="19" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="23.166666666666668" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="23.333333333333332" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="28.416666666666668" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="28.583333333333332" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="30.666666666666668" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="30.833333333333332" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="32.625" PointY="29.643697916666667" />
+          <ConnectorPoint PointX="32.625" PointY="28.018951822916669" />
+          <ConnectorPoint PointX="33" PointY="28.018951822916669" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Type_Defect_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="29.278595377604169" />
+          <ConnectorPoint PointX="7.5" PointY="29.278595377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Station_Feeder" ManuallyRouted="false">
+          <ConnectorPoint PointX="16.5" PointY="24.268992513020834" />
+          <ConnectorPoint PointX="17.25" PointY="24.268992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Line_Station" ManuallyRouted="false">
+          <ConnectorPoint PointX="13.5" PointY="21.326396484375003" />
+          <ConnectorPoint PointX="13.5" PointY="24.297801106770834" />
+          <ConnectorPoint PointX="15" PointY="24.297801106770834" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Segment_Line" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="18.09375" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="18.09375" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="18.09375" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="18.09375" />
+          <ConnectorPoint PointX="9.5833333333333339" PointY="18.09375" />
+          <ConnectorPoint PointX="12.75" PointY="18.09375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Line" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.482770937500007" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="20.482770937500007" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="20.482770937500007" />
+          <ConnectorPoint PointX="9.5" PointY="20.482770937500007" />
+          <ConnectorPoint PointX="9.5" PointY="17.75" />
+          <ConnectorPoint PointX="13.5" PointY="17.75" />
+          <ConnectorPoint PointX="13.5" PointY="18" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Model_Machine" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.5" PointY="23.725698242187498" />
+          <ConnectorPoint PointX="9" PointY="23.725698242187498" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Station" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="22.59375" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="22.59375" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="22.59375" />
+          <ConnectorPoint PointX="15" PointY="22.59375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Status_Machine" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="8.25" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="8.25" PointY="24.451396484374996" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Machine" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="21.46875" />
+          <ConnectorPoint PointX="7.5" PointY="21.46875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Brand_Machine_Model" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="24.047587890624996" />
+          <ConnectorPoint PointX="7.125" PointY="24.422587890624996" />
+          <ConnectorPoint PointX="7.125" PointY="26.509095052083332" />
+          <ConnectorPoint PointX="10.100769230769231" PointY="26.509095052083332" />
+          <ConnectorPoint PointX="10.5" PointY="26.109864282852563" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Machine_Brand" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="22.235301106770834" />
+          <ConnectorPoint PointX="5.25" PointY="22.235301106770834" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Type_Machine_Model" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="28.063460538461534" />
+          <ConnectorPoint PointX="7.3125" PointY="27.500960538461534" />
+          <ConnectorPoint PointX="7.3125" PointY="26.759095052083332" />
+          <ConnectorPoint PointX="9.90038361538462" PointY="26.759095052083332" />
+          <ConnectorPoint PointX="10.525383615384616" PointY="26.134095052083332" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Machine_Model" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="22.595602213541667" />
+          <ConnectorPoint PointX="3.75" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="4.0729191666666669" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="4.2395858333333329" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="4.2760454166666664" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="4.4427120833333325" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="24.663198242187498" />
+          <ConnectorPoint PointX="10.5" PointY="24.663198242187498" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Machine_Status" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.1562525" PointY="22.595602213541667" />
+          <ConnectorPoint PointX="4.1562525" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="4.2760454166666664" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="4.4427120833333325" PointY="25.9612939453125" />
+          <ConnectorPoint PointX="5.25" PointY="25.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Machine_Type_Result" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="30.557190755208339" />
+          <ConnectorPoint PointX="6" PointY="31.045146484375003" />
+          <ConnectorPoint PointX="10.5" PointY="31.045146484375003" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Machine_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.3437475" PointY="22.595602213541667" />
+          <ConnectorPoint PointX="3.3437475" PointY="29.278595377604169" />
+          <ConnectorPoint PointX="4.2760454166666664" PointY="29.278595377604169" />
+          <ConnectorPoint PointX="4.4427120833333325" PointY="29.278595377604169" />
+          <ConnectorPoint PointX="5.25" PointY="29.278595377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Model_SPI_Panel" ManuallyRouted="false">
+          <ConnectorPoint PointX="18.75" PointY="21.131823789062498" />
+          <ConnectorPoint PointX="20.166666666666668" PointY="21.131823789062498" />
+          <ConnectorPoint PointX="20.333333333333332" PointY="21.131823789062498" />
+          <ConnectorPoint PointX="23.25" PointY="21.131823789062498" />
+          <ConnectorPoint PointX="23.25" PointY="22.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Project_Model" ManuallyRouted="false">
+          <ConnectorPoint PointX="16.5" PointY="20.0381982421875" />
+          <ConnectorPoint PointX="17.25" PointY="20.0381982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Model" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.910926979166661" />
+          <ConnectorPoint PointX="9.25" PointY="20.910926979166661" />
+          <ConnectorPoint PointX="9.25" PointY="17.5" />
+          <ConnectorPoint PointX="15.666666666666666" PointY="17.5" />
+          <ConnectorPoint PointX="15.833333333333334" PointY="17.5" />
+          <ConnectorPoint PointX="18" PointY="17.5" />
+          <ConnectorPoint PointX="18" PointY="18.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Segment_Project" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="17.125" />
+          <ConnectorPoint PointX="15.75" PointY="17.125" />
+          <ConnectorPoint PointX="15.75" PointY="18" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Project" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.375731927083343" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="20.375731927083343" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="20.375731927083343" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="20.375731927083343" />
+          <ConnectorPoint PointX="9.5833333333333339" PointY="20.375731927083343" />
+          <ConnectorPoint PointX="9.625" PointY="20.375731927083343" />
+          <ConnectorPoint PointX="9.625" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="14.666666666666666" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="14.833333333333334" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="15.307293166666666" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="15.473959833333334" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="15.781251999999999" PointY="21.576396484375003" />
+          <ConnectorPoint PointX="15.781251999999999" PointY="21.326396484375003" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Result_SPI_Board" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="30.840803281249997" />
+          <ConnectorPoint PointX="28.5" PointY="30.840803281249997" />
+          <ConnectorPoint PointX="28.5" PointY="28.316793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Result_SPI_Panel" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="29.932147565104174" />
+          <ConnectorPoint PointX="23.25" PointY="29.932147565104174" />
+          <ConnectorPoint PointX="23.25" PointY="27.816712239583325" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Result" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.3593787499999994" PointY="22.595602213541667" />
+          <ConnectorPoint PointX="4.3593787499999994" PointY="30.868467552083342" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="30.868467552083342" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="30.868467552083342" />
+          <ConnectorPoint PointX="10.5" PointY="30.868467552083342" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Segment" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.384348958333334" />
+          <ConnectorPoint PointX="7.5" PointY="19.384348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_SPI_Board_SPI_Pad" ManuallyRouted="false">
+          <ConnectorPoint PointX="29.25" PointY="25.46875" />
+          <ConnectorPoint PointX="33.75" PointY="25.46875" />
+          <ConnectorPoint PointX="33.75" PointY="25.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_SPI_Panel_SPI_Board" ManuallyRouted="false">
+          <ConnectorPoint PointX="24" PointY="23.40625" />
+          <ConnectorPoint PointX="28.5" PointY="23.40625" />
+          <ConnectorPoint PointX="28.5" PointY="25.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_Station_SPI_Panel" ManuallyRouted="false">
+          <ConnectorPoint PointX="16.5" PointY="23.228244256510422" />
+          <ConnectorPoint PointX="17" PointY="23.228244256510422" />
+          <ConnectorPoint PointX="17" PointY="23.125" />
+          <ConnectorPoint PointX="19.25" PointY="23.125" />
+          <ConnectorPoint PointX="19.25" PointY="21.875" />
+          <ConnectorPoint PointX="20.166666666666668" PointY="21.875" />
+          <ConnectorPoint PointX="20.333333333333332" PointY="21.875" />
+          <ConnectorPoint PointX="22.843747999999998" PointY="21.875" />
+          <ConnectorPoint PointX="22.843747999999998" PointY="22.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.FK_UserProfile_Station" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="21.017965989583324" />
+          <ConnectorPoint PointX="9.5" PointY="21.017965989583324" />
+          <ConnectorPoint PointX="9.5" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="11.426269531250002" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="11.59293619791667" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="14.791666666666666" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="14.958333333333334" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="15.3906265" PointY="21.451396484375003" />
+          <ConnectorPoint PointX="15.3906265" PointY="22.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="ISPCModel.webpages_UsersInRoles" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="20.547841796874998" />
+          <ConnectorPoint PointX="3" PointY="20.547841796874998" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

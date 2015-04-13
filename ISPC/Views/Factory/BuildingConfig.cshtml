@@ -1,0 +1,459 @@
+﻿@{
+    ViewBag.Title = "ISPC Factory Configuration";
+    }
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModel/Factory/BuildingConfig.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ViewModel/Factory/SegmentConfig.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ViewModel/Factory/BusinessUnitConfig.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ViewModel/Factory/ProjectConfig.js")" type="text/javascript"></script>
+}
+<div class="section container" id="B_M">
+    <fieldset>
+        <legend><i class="icon-cogs"></i>&nbsp;Building</legend>
+    </fieldset>
+    <div class="col-md-8 col-sm-8">
+        <div class="row">
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            Building Name
+                        </th>
+                        <th>
+                            Active
+                        </th>
+                        <th>
+                            Creator Name
+                        </th>
+                        <th>
+                            Creation Time
+                        </th>
+                        <th>
+                            Effective Time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: BuildingList">
+                    <tr data-bind="click:$parent.editBuilding">
+                        <th data-bind="text: Building_Name">
+                        </th>
+                        <th data-bind="text: Is_Active">
+                        </th>
+                        <th data-bind="text: Creator_Name">
+                        </th>
+                        <th data-bind="text: Creation_Time">
+                        </th>
+                        <th data-bind="text: Effect_Time">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
+        <h5 class="text-center">
+            <strong>Building Management</strong></h5>
+        <form class="form-horizontal" role="form" action="">
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="Building_Id" placeholder="Building Id"
+                data-bind="value:sBuilding_Id">
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" id="Building_Name" placeholder="Building Name"
+                    data-bind="value: sBuilding_Name">
+            </div>
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="bCreator_Name" placeholder="Creator Name"
+                data-bind="value: sCreator_Name">
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="bCreation_Time" placeholder="Creation Time"
+                data-bind="value: sCreation_Time">
+        </div>
+        <div class="form-group form-group-sm ">
+            <div class='input-group date datetimepicker input-group-sm'>                
+                <input type="text" class="form-control " id="bEffect_Time" data-bind="value: sEffect_Time"
+                    placeholder="Effective Time" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <input type="checkbox" id="BuildingCheck" />
+        </div>
+        <div class="form-group form-group-sm btn-group">
+            <button type="button" class="btn btn-warning" data-bind="click: clearsBuilding">
+                <i class="icon-file"></i>&nbsp;New
+            </button>
+            <button type="button" class="btn btn-danger" data-bind="click: deleteBuilding">
+                <i class="icon-trash"></i>&nbsp;Delete
+            </button>
+            <button type="button" class="btn btn-primary" data-bind="click: storeBuilding">
+                <i class="icon-save"></i>&nbsp;Save
+            </button>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="section container" id="S_M">
+    <fieldset>
+        <legend><i class="icon-cogs"></i>&nbsp;Segment</legend>
+    </fieldset>
+    <div class="col-md-8 col-sm-8">
+        <div class="row">
+            <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="availableBuildings">
+                    Buildings</label>
+                <select data-bind="options: availableBuildings, 
+                                optionsValue: 'Building_Id', 
+                                optionsText: 'Building_Name', 
+                                value: selectedBuildingTable, 
+                                optionsCaption: 'Choose Building...'" class="form-control input-sm">
+                </select>
+            </div>
+            <button type="button" class="btn btn-success btn-sm" data-bind="click: loadSegments">
+                <i class="icon-refresh"></i>&nbsp;Refresh</button>
+            </form>
+        </div>
+        <div class="row">
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            Segment Name
+                        </th>
+                        <th>
+                            Segment Code
+                        </th>
+                        <th>
+                            Active
+                        </th>
+                        <th>
+                            Creator Name
+                        </th>
+                        <th>
+                            Creation Time
+                        </th>
+                        <th>
+                            Effect Time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: SegmentList">
+                    <tr data-bind="click:$parent.editSegment">
+                        <th data-bind="text: Segment_Name">
+                        </th>
+                        <th data-bind="text: Segment_Code">
+                        </th>
+                        <th data-bind="text: Is_Active">
+                        </th>
+                        <th data-bind="text: Creator_Name">
+                        </th>
+                        <th data-bind="text: Creation_Time">
+                        </th>
+                        <th data-bind="text: Effect_Time">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-md-offset-1 col-sm-offset-1">
+        <h5 class="text-center">
+            <strong>Segment Management</strong></h5>
+        <form class="form-horizontal" role="form" action="">
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="Segment_Id" placeholder="Segment Id"
+                data-bind="value: sSegment_Id">
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" id="Segment_Name" placeholder="Segment Name"
+                    data-bind="value: sSegment_Name">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">Code</span>
+                <input class="form-control" type="text" id="Segment_Code" placeholder="Segment Code"
+                    data-bind="value: sSegment_Code">
+            </div>
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="sCreator_Name" placeholder="Creator Name"
+                data-bind="value: sCreator_Name">
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="sCreation_Time" placeholder="Creation Time"
+                data-bind="value: sCreation_Time">
+        </div>
+        <div class="form-group form-group-sm ">
+            <div class='input-group date datetimepicker input-group-sm'>                
+                <input type="text" class="form-control " id="sEffect_Time" data-bind="value: sEffect_Time"
+                    placeholder="Effective Time" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <input type="checkbox" id="SegmentCheck" />
+        </div>
+        <div class="form-group form-group-sm btn-group">
+            <button type="button" class="btn btn-warning" data-bind="click: clearSegment">
+                <i class="icon-file"></i>&nbsp;New
+            </button>
+            <button type="button" class="btn btn-danger" data-bind="click: deleteSegment">
+                <i class="icon-trash"></i>&nbsp;Delete
+            </button>
+            <button type="button" class="btn btn-primary" data-bind="click: storeSegment">
+                <i class="icon-save"></i>&nbsp;Save
+            </button>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="section container" id="BU_M">
+    <fieldset>
+        <legend><i class="icon-cogs"></i>&nbsp;BusinessUnit</legend>
+    </fieldset>
+    <div class="col-md-8 col-sm-8">
+        <div class="row">
+            <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="availableBuildings">
+                    Buildings</label>
+                <select data-bind="options: availableBuildings, 
+                                optionsValue: 'Building_Id',
+                                optionsText: 'Building_Name',
+                                value: selectedBuildingTable,
+                                optionsCaption: 'Choose Building...',event: {change: loadSegments}"
+                    class="form-control input-sm">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="availableSegments">
+                    Segments</label>
+                <select data-bind="options: availableSegments, 
+                                optionsValue: 'Segment_Id',
+                                optionsText: 'Segment_Name',
+                                value: selectedSegmentTable,
+                                optionsCaption: 'Choose Segment...'" class="form-control input-sm">
+                </select>
+            </div>
+            <button type="button" class="btn btn-success btn-sm" data-bind="click: loadBUs">
+                <i class="icon-refresh"></i>&nbsp;Refresh</button>
+            </form>
+        </div>
+        <div class="row">
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            BU Name
+                        </th>
+                        <th>
+                            Active
+                        </th>
+                        <th>
+                            Creator Name
+                        </th>
+                        <th>
+                            Creation Time
+                        </th>
+                        <th>
+                            Effective Time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: BUList">
+                    <tr data-bind="click: $parent.editBU">
+                        <th data-bind="text: BU_Name">
+                        </th>
+                        <th data-bind="text: Is_Active">
+                        </th>
+                        <th data-bind="text: Creator_Name">
+                        </th>
+                        <th data-bind="text: Creation_Time">
+                        </th>
+                        <th data-bind="text: Effect_Time">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-md-offset-1">
+        <h5 class="text-center">
+            <strong>BusinessUnit Management</strong></h5>
+        <form class="form-horizontal" role="form" action="">
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="BU_Id" placeholder="BU Id" data-bind="value: sBU_Id">
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" id="BU_Name" placeholder="BU Name" data-bind="value: sBU_Name">
+            </div>
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="buCreator_Name" placeholder="Creator Name"
+                data-bind="value: sCreator_Name">
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="buCreation_Time" placeholder="Creation Time"
+                data-bind="value: sCreation_Time">
+        </div>
+        <div class="form-group form-group-sm ">
+            <div class='input-group date datetimepicker input-group-sm'>                
+                <input type="text" class="form-control " id="buEffect_Time" data-bind="value: sEffect_Time"
+                    placeholder="Effective Time" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <input type="checkbox" id="BUCheck" />
+        </div>
+        <div class="form-group form-group-sm btn-group">
+            <button type="button" class="btn btn-warning" data-bind="click: clearBU">
+                <i class="icon-file"></i>&nbsp;New
+            </button>
+            <button type="button" class="btn btn-danger" data-bind="click: deleteBU">
+                <i class="icon-trash"></i>&nbsp;Delete
+            </button>
+            <button type="button" class="btn btn-primary" data-bind="click: storeBU">
+                <i class="icon-save"></i>&nbsp;Save
+            </button>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="section container" id="P_M">
+    <fieldset>
+        <legend><i class="icon-cogs"></i>&nbsp;Project</legend>
+    </fieldset>
+    <div class="col-md-8 col-sm-8">
+        <div class="row">
+            <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="availableBuildings">
+                    Buildings</label>
+                <select data-bind="options: availableBuildings, 
+                                optionsValue: 'Building_Id',
+                                optionsText: 'Building_Name',
+                                value: selectedBuildingTable,
+                                optionsCaption: 'Choose Building...',event: {change: loadSegments}"
+                    class="form-control input-sm">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="availableSegments">
+                    Segments</label>
+                <select data-bind="options: availableSegments, 
+                                optionsValue: 'Segment_Id',
+                                optionsText: 'Segment_Name',
+                                value: selectedSegmentTable,
+                                optionsCaption: 'Choose Segment...', event: {change: loadBUs}" class="form-control input-sm">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="availableBUs">
+                    BUs</label>
+                <select data-bind="options: availableBUs, 
+                                optionsValue: 'BU_Id',
+                                optionsText: 'BU_Name',
+                                value: selectedBUTable,
+                                optionsCaption: 'Choose BU...'" class="form-control input-sm">
+                </select>
+            </div>
+            <button type="button" class="btn btn-success btn-sm" data-bind="click: loadProjects">
+                <i class="icon-refresh"></i>&nbsp;Refresh</button>
+            </form>
+        </div>
+        <div class="row">
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            Project Name
+                        </th>
+                        <th>
+                            Active
+                        </th>
+                        <th>
+                            Creator Name
+                        </th>
+                        <th>
+                            Creation Time
+                        </th>
+                        <th>
+                            Effective Time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: ProjectList">
+                    <tr data-bind="click: $parent.editProject">
+                        <th data-bind="text: Project_Name">
+                        </th>
+                        <th data-bind="text: Is_Active">
+                        </th>
+                        <th data-bind="text: Creator_Name">
+                        </th>
+                        <th data-bind="text: Creation_Time">
+                        </th>
+                        <th data-bind="text: Effect_Time">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-md-offset-1">
+        <h5 class="text-center">
+            <strong>Project Management</strong></h5>
+        <form class="form-horizontal" role="form" action="">
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="Project_Id" placeholder="Project Id"
+                data-bind="value: sProject_Id">
+        </div>
+        <div class="form-group form group-sm">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" id="Project_Name" placeholder="Project Name"
+                    data-bind="value: sProject_Name">
+            </div>
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="pCreator_Name" placeholder="Creator Name"
+                data-bind="value: sCreator_Name">
+        </div>
+        <div class="form-group form-group-sm" style="display: none">
+            <input class="form-control" type="text" id="pCreation_Time" placeholder="Creation Time"
+                data-bind="value: sCreation_Time">
+        </div>
+        <div class="form-group form-group-sm ">
+            <div class='input-group date datetimepicker input-group-sm'>                
+                <input type="text" class="form-control " id="pEffect_Time" data-bind="value: sEffect_Time"
+                    placeholder="Effective Time" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <input type="checkbox" id="ProjectCheck" />
+        </div>
+        <div class="form-group form-group-sm btn-group">
+            <button type="button" class="btn btn-warning" data-bind="click: clearProject">
+                <i class="icon-file"></i>&nbsp;New
+            </button>
+            <button type="button" class="btn btn-danger" data-bind="click: deleteProject">
+                <i class="icon-trash"></i>&nbsp;Delete
+            </button>
+            <button type="button" class="btn btn-primary" data-bind="click: storeProject">
+                <i class="icon-save"></i>&nbsp;Save
+            </button>
+        </div>
+        </form>
+    </div>
+</div>

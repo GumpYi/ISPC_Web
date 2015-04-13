@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "ISPC History Analysis Multi Yield View";     
+}
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Basic/HighchartsThemes/highcharts-3d.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ViewModel/HASPI/HASPIMultiYieldView.js")" type="text/javascript"></script>
+}
+<div id="firstDiv">
+</div>
+<div id="Condition">
+    <div class="container" style="background: #fff;">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-warning form-control"  data-toggle="modal" data-target="#MultiYieldModel">
+                    <strong>Filling The Condition</strong></button>            
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="FPYChart">
+    <div class="container" style="background: #fff;">
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div style="width: 100%; height: 400px;" id="FPYContainer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DPPMChart">
+    <div class="container" style="background: #fff;">
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div style="width: 100%; height: 400px;" id="DPPMContainer">
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+<!--Model -->
+<div class="modal fade" id="MultiYieldModel" tabindex="-1" role="dialog" aria-labelledby="MultiYieldModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="MultiYieldModelLabel">Condition</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fuild">
+        <div class="row">
+            <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="availableBuildings">
+                    Buildings</label>
+                <select data-bind="options: availableBuildings, 
+                                optionsValue: 'Building_Id',
+                                optionsText: 'Building_Name',
+                                value: selectedBuildingTable,
+                                optionsCaption: 'Choose Building...',event: {change: loadSegments}"
+                    class="form-control input-sm" id="availableBuildings">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="availableSegments">
+                    Segments</label>
+                <select data-bind="options: availableSegments, 
+                                optionsValue: 'Segment_Id',
+                                optionsText: 'Segment_Name',
+                                value: selectedSegmentTable,
+                                optionsCaption: 'Choose Segment...'" class="form-control input-sm"
+                    id="availableSegments">
+                </select>
+            </div>
+            <button type="button" class="btn btn-success btn-sm" id="refresh" data-bind="click: loadLines">
+                <i class="icon-refresh"></i>&nbsp;Refresh</button>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div style="margin-top: 10px;">
+                    <select data-bind="options: shownLineList, 
+                                optionsValue: 'Line_Id', 
+                                optionsText: function(item) {
+                                       return '&nbsp;&nbsp;&nbsp;&nbsp;'+item.Line_Name + ' (Location: ' + item.Line_Location + ')&nbsp;&nbsp;&nbsp;&nbsp;'
+                                   }, 
+                                selectedOptions: selectedLineList" multiple="true" size="8">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group" style="margin-bottom: 5px; margin-top: 10px;">
+                    <div class="input-group date datetimepicker input-group-sm">
+                        <span class="input-group-addon">Start:</span>
+                        <input type="text" class="form-control" id="StartTime" placeholder="Start Time" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group date datetimepicker input-group-sm">
+                        <span class="input-group-addon">End:&nbsp;</span>
+                        <input type="text" class="form-control" id="EndTime" placeholder="End Time" />
+                    </div>
+                </div>
+                <div class="form-group">      
+                    <p>
+                        <strong>Time By :</strong></p>
+                    <label class="radio-inline">
+                        <input type="radio" name="Time" id="inlineRadio1" value="Hour" data-bind="checked: timeBy">
+                        Hour
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="Time" id="inlineRadio2" value="Day" data-bind="checked: timeBy">
+                        Day
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="Time" id="inlineRadio3" value="Week" data-bind="checked: timeBy">
+                        Week
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="Time" id="inlineRadio4" value="Month" data-bind="checked: timeBy">
+                        Month
+                    </label>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="SaveMultiYieldDialog">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

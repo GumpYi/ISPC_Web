@@ -1,0 +1,147 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ISPC.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SPI" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="SPI_Panel_Result_Good" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Good</Value>
+    </Setting>
+    <Setting Name="AOI" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="RealTimePanelsNum" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="SPIFPYLCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">95</Value>
+    </Setting>
+    <Setting Name="SPIDPPMUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="AOIFPYLCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="AOIFPPMUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="AOIDPPMUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="SPIVLSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="SPIVUSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="SPIVLCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="SPIVUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">130</Value>
+    </Setting>
+    <Setting Name="SPIHLSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIHUSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIHLCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIHUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIAUSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="SPIALSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="SPIAUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">130</Value>
+    </Setting>
+    <Setting Name="SPIALCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="SPIXOUSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIXOLSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIXOLCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIXOUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIYOUSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIYOLSL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIYOLCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIYOUCL" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SPIExcessive" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Excessive</Value>
+    </Setting>
+    <Setting Name="SPIInsufficient" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Insufficient</Value>
+    </Setting>
+    <Setting Name="SPIShape" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Shape</Value>
+    </Setting>
+    <Setting Name="SPIPosition" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Position</Value>
+    </Setting>
+    <Setting Name="SPIBridging" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bridging</Value>
+    </Setting>
+    <Setting Name="SPIUpperHeight" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UpperHeight</Value>
+    </Setting>
+    <Setting Name="SPILowerHeight" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LowerHeight</Value>
+    </Setting>
+    <Setting Name="SPIHighArea" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">HighArea</Value>
+    </Setting>
+    <Setting Name="SPILowArea" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LowArea</Value>
+    </Setting>
+    <Setting Name="SPISmear" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Smear</Value>
+    </Setting>
+    <Setting Name="SPISuccess" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Good</Value>
+    </Setting>
+    <Setting Name="SPI_Panel_Result_NG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NG</Value>
+    </Setting>
+    <Setting Name="SPI_Panel_Result_Pass" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Pass</Value>
+    </Setting>
+    <Setting Name="SPI_Panel_Result_Warn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Warn</Value>
+    </Setting>
+    <Setting Name="AOIPanelResult_Good" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Good</Value>
+    </Setting>
+    <Setting Name="AOIPanelResult_DF" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DummyFault</Value>
+    </Setting>
+    <Setting Name="AOIPanelResult_Repaired" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Repaired</Value>
+    </Setting>
+    <Setting Name="AOIPanelResult_Failed" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Failed</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

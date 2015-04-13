@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CC004AB-74A6-4C7E-8688-C02F18D4C9DF}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISPC</RootNamespace>
+    <AssemblyName>ISPC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler, Version=3.1.1.140, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MiniProfiler.3.1.1.140\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.3\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebBackgrounder">
+      <HintPath>..\packages\WebBackgrounder.0.2.0\lib\net40\WebBackgrounder.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BackgroudThreads\WebBackgrounderSetup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\FactoryController.cs" />
+    <Compile Include="Controllers\HASPIController.cs" />
+    <Compile Include="Controllers\HASPIDefectViewController.cs" />
+    <Compile Include="Controllers\HASPIYieldViewController.cs" />
+    <Compile Include="Controllers\JsonBUController.cs" />
+    <Compile Include="Controllers\JsonBuildingController.cs" />
+    <Compile Include="Controllers\JsonLineController.cs" />
+    <Compile Include="Controllers\JsonMachineController.cs" />
+    <Compile Include="Controllers\JsonProjectController.cs" />
+    <Compile Include="Controllers\JsonSegmentController.cs" />
+    <Compile Include="Controllers\RTAOIController.cs" />
+    <Compile Include="Controllers\RTAXIController.cs" />
+    <Compile Include="Controllers\RTIndexController.cs" />
+    <Compile Include="Controllers\RTSPIController.cs" />
+    <Compile Include="EntityFramework\AOI_Board.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\AOI_Component.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\AOI_Panel.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Building.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\BusinessUnit.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Defect_Type.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Feeder.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ISPC.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISPC.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ISPC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ISPC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ISPC.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Line.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Machine.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Machine_Brand.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Machine_Model.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Machine_Status.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Machine_Type.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Model.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Project.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Repair_State_Result.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Result.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Segment.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\SPI_Board.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\SPI_Pad.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\SPI_Panel.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Station.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\UserProfile.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\webpages_Membership.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\webpages_OAuthMembership.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\webpages_Roles.cs">
+      <DependentUpon>ISPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Factory\AccountModels.cs" />
+    <Compile Include="Models\Factory\BuildingInfo.cs" />
+    <Compile Include="Models\Factory\BUInfo.cs" />
+    <Compile Include="Models\Factory\LineInfo.cs" />
+    <Compile Include="Models\Factory\MachineInfo.cs" />
+    <Compile Include="Models\Factory\ProjectInfo.cs" />
+    <Compile Include="Models\HASPI\HASPIComponent.cs" />
+    <Compile Include="Models\RealTimeCache\RTBuilding.cs" />
+    <Compile Include="Models\RealTimeCache\RTFactory.cs" />
+    <Compile Include="Models\RealTimeCache\RTLine.cs" />
+    <Compile Include="Models\RealTimeCache\RTSegment.cs" />
+    <Compile Include="Models\RealTimeCache\SessionShownLine.cs" />
+    <Compile Include="Models\RealTimeCache\RTStation.cs" />
+    <Compile Include="Models\RealTimeCache\RTAOIStation.cs" />
+    <Compile Include="Models\RealTimeCache\RTSPIStation.cs" />
+    <Compile Include="Models\Factory\SegmentInfo.cs" />
+    <Compile Include="Models\Factory\StationInfo.cs" />
+    <Compile Include="Models\RealTimeCache\SPIRangeData.cs" />
+    <Compile Include="Models\RealTimeCache\ULCLSetting.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DropDownRelated\CommonDropDownData.cs" />
+    <Compile Include="Services\FactoryRelated\BUConfig.cs" />
+    <Compile Include="Services\FactoryRelated\BuildingConfig.cs" />
+    <Compile Include="Services\FactoryRelated\LineConfig.cs" />
+    <Compile Include="Services\FactoryRelated\ProjectConfig.cs" />
+    <Compile Include="Services\FactoryRelated\SegmentConfig.cs" />
+    <Compile Include="Services\HARelated\HASPIDefectView.cs" />
+    <Compile Include="Services\HARelated\HASPIMultiDefectView.cs" />
+    <Compile Include="Services\HARelated\HASPIMultiYieldView.cs" />
+    <Compile Include="Services\HARelated\HASPIYieldView.cs" />
+    <Compile Include="Services\RealTimeRelated\RTIndexService.cs" />
+    <Compile Include="Services\RealTimeRelated\RTSPIService.cs" />
+    <Compile Include="Services\SessionRelated\ShownLineConfig.cs" />
+    <Compile Include="Services\SessionRelated\SPIRangeConfig.cs" />
+    <Compile Include="Services\SessionRelated\ULCLConfig.cs" />
+    <Compile Include="Utils\CalculateWeeks.cs" />
+    <Compile Include="Utils\DateTimeManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\bootstrap-datetimepicker.css" />
+    <Content Include="Content\themes\bootstrap-switch.min.css" />
+    <Content Include="Content\themes\bootstrap-theme.min.css" />
+    <Content Include="Content\themes\bootstrap.min.css" />
+    <Content Include="Content\themes\font-awesome-ie7.min.css" />
+    <Content Include="Content\themes\font-awesome.min.css" />
+    <Content Include="Content\themes\ie.css" />
+    <Content Include="Content\themes\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="Content\themes\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\themes\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\images\ui-icons_f6cf3b_256x240.png" />
+    <Content Include="Content\themes\ispc\HASPIDefectView.css" />
+    <Content Include="Content\themes\jquery-ui-1.10.0.custom.css" />
+    <Content Include="Content\themes\jquery.ui.1.10.0.ie.css" />
+    <Content Include="Content\themes\ispc\main.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\Common\accordion_arrows.png" />
+    <Content Include="Images\Common\blank.gif" />
+    <Content Include="Images\Common\calendar_arrows.png" />
+    <Content Include="Images\Common\combo_arrow.png" />
+    <Content Include="Images\Common\datagrid_icons.png" />
+    <Content Include="Images\Common\datebox_arrow.png" />
+    <Content Include="Images\Common\layout_arrows.png" />
+    <Content Include="Images\Common\linkbutton_bg.png" />
+    <Content Include="Images\Common\loading.gif" />
+    <Content Include="Images\Common\logo.png" />
+    <Content Include="Images\Common\menu_arrows.png" />
+    <Content Include="Images\Common\messager_icons.png" />
+    <Content Include="Images\Common\page-background.png" />
+    <Content Include="Images\Common\pagination_icons.png" />
+    <Content Include="Images\Common\panel_tools.png" />
+    <Content Include="Images\Common\searchbox_button.png" />
+    <Content Include="Images\Common\slider_handle.png" />
+    <Content Include="Images\Common\spinner_arrows.png" />
+    <Content Include="Images\Common\tabs_icons.png" />
+    <Content Include="Images\Common\tree_icons.png" />
+    <Content Include="Images\Common\validatebox_warning.png" />
+    <Content Include="Images\Machine\ky80302.jpg" />
+    <Content Include="Images\Machine\Siplace.jpg" />
+    <Content Include="Images\Machine\thumb-v510.jpg" />
+    <Content Include="Scripts\Basic\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\Basic\bootstrap-switch.min.js" />
+    <Content Include="Scripts\Basic\bootstrap.min.js" />
+    <Content Include="Scripts\Basic\buttons.js" />
+    <Content Include="Scripts\Basic\exporting.js" />
+    <Content Include="Scripts\Basic\highcharts.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\dark-blue.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\dark-green.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\dark-unica.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\gray.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\grid-light.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\grid.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\highcharts-3d.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\sand-signika.js" />
+    <Content Include="Scripts\Basic\HighchartsThemes\skies.js" />
+    <Content Include="Scripts\Basic\html5shiv.js" />
+    <Content Include="Scripts\Basic\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\Basic\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="Scripts\Basic\jquery.pin.js" />
+    <Content Include="Scripts\Basic\jquery.pin.min.js" />
+    <Content Include="Scripts\Basic\knockout-3.2.0.js" />
+    <Content Include="Scripts\Basic\modernizr-2.5.3.js" />
+    <Content Include="Scripts\Basic\moment.js" />
+    <Content Include="Scripts\Basic\respond.js" />
+    <Content Include="Scripts\Basic\spin.js" />
+    <Content Include="Scripts\Basic\unslider.min.js" />
+    <Content Include="Scripts\ViewModel\Factory\BuildingConfig.js" />
+    <Content Include="Scripts\ViewModel\Factory\BusinessUnitConfig.js" />
+    <Content Include="Scripts\ViewModel\Factory\LineConfig.js" />
+    <Content Include="Scripts\ViewModel\Factory\LineList.js" />
+    <Content Include="Scripts\ViewModel\Factory\ProjectConfig.js" />
+    <Content Include="Scripts\ViewModel\Factory\Supplier.js" />
+    <Content Include="Scripts\ViewModel\HASPI\HASPIDefectView.js" />
+    <Content Include="Scripts\ViewModel\HASPI\HASPIMultiDefectView.js" />
+    <Content Include="Scripts\ViewModel\HASPI\HASPIMultiYieldView.js" />
+    <Content Include="Scripts\ViewModel\HASPI\HASPIYieldView.js" />
+    <Content Include="Scripts\ViewModel\RealTime\RealTimeIndex.js" />
+    <Content Include="Scripts\ViewModel\RealTime\RealTimeSPI.js" />
+    <Content Include="Scripts\ViewModel\Factory\SegmentConfig.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\font\fontawesome-webfont.eot" />
+    <None Include="Content\font\fontawesome-webfont.svg" />
+    <None Include="Content\font\fontawesome-webfont.ttf" />
+    <None Include="Content\font\fontawesome-webfont.woff" />
+    <None Include="Content\font\FontAwesome.otf" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Factory\BuildingConfig.cshtml" />
+    <Content Include="Views\Factory\LineConfig.cshtml" />
+    <Content Include="Views\Factory\LineList.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\RTIndex\Index.cshtml" />
+    <Content Include="Views\RTSPI\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <EntityDeploy Include="EntityFramework\ISPC.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ISPC.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFramework\ISPC.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ISPC.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\ISPC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ISPC.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\HASPI\Index.cshtml" />
+    <Content Include="Views\HASPI\DefectView.cshtml" />
+    <Content Include="Views\HASPI\Overview.cshtml" />
+    <Content Include="Views\HASPI\YieldView.cshtml" />
+    <Content Include="Views\HASPI\MultiYieldView.cshtml" />
+    <Content Include="Views\HASPI\MultiDefectView.cshtml" />
+    <Content Include="Views\RTAOI\Index.cshtml" />
+    <Content Include="Views\Factory\MachineRelated.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52148</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52148/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

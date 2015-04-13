@@ -1,0 +1,124 @@
+body
+{
+    background: url('../../../Images/Common/page-background.png') repeat scroll 0% 0% transparent;    
+}
+#basicbg
+{
+     background: #ffffff;
+    }
+.section
+{   background: #ffffff;
+    border: 1px solid #53555C;
+    margin-top: 5px;
+}
+.section1
+{   
+    border: 1px solid #53555C;
+}
+.spidisdia
+{    
+    height:250px; 
+    display: inline-block;
+    width:250px;
+    }
+legend
+{
+    color: #53555C;
+    font-family: "Open Sans" ,sans-serif;
+    font-size: 20px;
+    margin-top: 5px;
+}
+th
+{
+    text-align: center;
+}
+td
+{
+    text-align: center;
+    }
+.navbar-brand
+{
+    padding-top: 0px;
+}
+#login ul
+{
+    margin: 0;
+}
+
+#login li
+{
+    display: inline;
+    list-style: none;
+}
+.station
+{
+    width: 50px;
+    height: 50px;
+}
+
+.form.signin-heading
+{
+    margin-bottom: 10px;
+}
+.content-wrapper
+{
+    margin-top: 20px;
+}
+.banner
+{
+    position: relative;
+    overflow: auto;
+}
+.banner ul {
+padding-left: 0;
+}
+.banner li
+{
+    list-style: none;
+}
+.banner ul li
+{
+    float: left;
+    min-height: 400px;
+}
+.banner .dots
+{
+    position: absolute; 
+    bottom: 5px;  
+    left: 43%;
+}
+.banner .dots li
+{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    margin: 0 4px;
+    text-indent: -999em;
+    border: 2px solid #0099FF;
+    cursor: pointer;
+    color:Black;
+}
+.banner .dots li.active
+{
+    background: #0099FF;
+}
+.chart{
+	box-sizing: border-box;
+	height: 420px;
+	padding: 20px 15px 15px 15px;	
+	border: 1px solid #ddd;
+	background: #fff;	
+	box-shadow: 0 3px 10px rgba(0,0,0,0.15);	
+}
+.spiRange
+{
+    width: 80px;
+    }
+    
+.dfresult
+{
+    color: #53555C;
+    font-family: "Times New Roman" ,sans-serif;
+    font-size: 18px;   
+    }
