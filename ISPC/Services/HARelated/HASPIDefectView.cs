@@ -109,26 +109,38 @@ namespace ISPC.Services.HARelated
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
-                int[] selectedPanelIdArray = (from panel in entity.SPI_Panel
-                                              where panel.Station_Id == this.StationId                                             
-                                              && panel.Model_Id == this.ModelId
-                                               && panel.Start_Time >= this.StartTime
-                                              && panel.End_Time <= this.EndTime
-                                              && panel.Result.Result_Name == Settings.Default.SPI_Panel_Result_NG
-                                              select panel.Panel_Id).ToArray();
+                //int[] selectedPanelIdArray = (from panel in entity.SPI_Panel
+                //                              where panel.Station_Id == this.StationId                                             
+                //                              && panel.Model_Id == this.ModelId
+                //                               && panel.Start_Time >= this.StartTime
+                //                              && panel.End_Time <= this.EndTime
+                //                              && panel.Result.Result_Name == Settings.Default.SPI_Panel_Result_NG
+                //                              select panel.Panel_Id).ToArray();
 
-                var tempSelectedSPIPadDataList = (from pad in entity.SPI_Pad
-                                                  where selectedPanelIdArray.Contains(pad.SPI_Board.Panel_Id)
-                                                  && pad.Defect_Type.Defect_Type_Name != Settings.Default.SPISuccess
-                                                  select
-                                                  new
-                                                  {
-                                                      ComponentName = pad.Component_Name,
-                                                      DefectType = pad.Defect_Type.Defect_Type_Name
-                                                  }).ToList();
-                
+                //var tempSelectedSPIPadDataList = (from pad in entity.SPI_Pad
+                //                                  where selectedPanelIdArray.Contains(pad.SPI_Board.Panel_Id)
+                //                                  && pad.Defect_Type.Defect_Type_Name != Settings.Default.SPISuccess
+                //                                  select
+                //                                  new
+                //                                  {
+                //                                      ComponentName = pad.Component_Name,
+                //                                      DefectType = pad.Defect_Type.Defect_Type_Name
+                //                                  }).ToList();
 
-                foreach (var data in tempSelectedSPIPadDataList)
+                var tempSelected = (from pad in entity.SPI_Pad
+                                    where pad.SPI_Board.SPI_Panel.Station_Id == this.StationId
+                                    && pad.SPI_Board.SPI_Panel.Model_Id == this.ModelId
+                                    && pad.SPI_Board.SPI_Panel.Start_Time >= this.StartTime
+                                    && pad.SPI_Board.SPI_Panel.End_Time <= this.EndTime
+                                    && pad.SPI_Board.SPI_Panel.Result.Result_Name == Settings.Default.SPI_Panel_Result_NG
+                                    && pad.Defect_Type.Defect_Type_Name != Settings.Default.SPISuccess
+                                    select
+                                    new
+                                    {
+                                        ComponentName = pad.Component_Name,
+                                        DefectType = pad.Defect_Type.Defect_Type_Name
+                                    }).ToList();
+                foreach (var data in tempSelected)
                 {
                     DefectAndComp defectAndComp;
                     defectAndComp.ComponentName = data.ComponentName;

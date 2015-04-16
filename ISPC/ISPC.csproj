@@ -192,6 +192,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\FactoryController.cs" />
+    <Compile Include="Controllers\HAAOIController.cs" />
+    <Compile Include="Controllers\HAAOIYieldViewController.cs" />
     <Compile Include="Controllers\HASPIController.cs" />
     <Compile Include="Controllers\HASPIDefectViewController.cs" />
     <Compile Include="Controllers\HASPIYieldViewController.cs" />
@@ -333,10 +335,12 @@
     <Compile Include="Services\FactoryRelated\LineConfig.cs" />
     <Compile Include="Services\FactoryRelated\ProjectConfig.cs" />
     <Compile Include="Services\FactoryRelated\SegmentConfig.cs" />
+    <Compile Include="Services\HARelated\HAAOIYieldView.cs" />
     <Compile Include="Services\HARelated\HASPIDefectView.cs" />
     <Compile Include="Services\HARelated\HASPIMultiDefectView.cs" />
     <Compile Include="Services\HARelated\HASPIMultiYieldView.cs" />
     <Compile Include="Services\HARelated\HASPIYieldView.cs" />
+    <Compile Include="Services\HARelated\HAYieldView.cs" />
     <Compile Include="Services\RealTimeRelated\RTIndexService.cs" />
     <Compile Include="Services\RealTimeRelated\RTSPIService.cs" />
     <Compile Include="Services\SessionRelated\ShownLineConfig.cs" />
@@ -566,6 +570,7 @@
     <Content Include="Views\HASPI\MultiDefectView.cshtml" />
     <Content Include="Views\RTAOI\Index.cshtml" />
     <Content Include="Views\Factory\MachineRelated.cshtml" />
+    <Content Include="Views\HAAOI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

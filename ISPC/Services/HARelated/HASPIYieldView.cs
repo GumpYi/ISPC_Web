@@ -11,22 +11,9 @@ using Newtonsoft.Json;
 
 namespace ISPC.Services.HARelated
 {
-    public class HASPIYieldView
+    public class HASPIYieldView: HAYieldView
     {
-        #region Property declaration
-        [JsonIgnore]
-        public int StationId { get; set; }
-        [JsonIgnore]
-        public DateTime StartTime { get; set; }
-        [JsonIgnore]
-        public DateTime EndTime { get; set; }
-        [JsonIgnore]
-        public int ModelId { get; set; }
-        [JsonIgnore]
-        public TimeBy timeBy { get; set; }
-        [JsonIgnore]
-        public CategoryBy categoryBy { get; set; }
-        public Dictionary<string, Dictionary<string, double>> FPYBySelectedSection { get; set; }
+        #region Property declaration               
         public Dictionary<string, float> DPPMBySelectedSection { get; set; }
         #endregion
 
@@ -42,7 +29,7 @@ namespace ISPC.Services.HARelated
             this.DPPMBySelectedSection = new Dictionary<string, float>();
         }
 
-        public string GetYieldViewData()
+        public override string GetYieldViewData()
         {
             if (this.categoryBy == CategoryBy.TimeAndModel && this.ModelId == 0)
             {
@@ -60,7 +47,7 @@ namespace ISPC.Services.HARelated
             return (JsonConvert.SerializeObject(this));
         }
 
-        private void OptimizeDicStructure()
+        private override void OptimizeDicStructure()
         {
             string filter = string.Empty;
             this.GetDateTimeFilter(ref filter);
@@ -120,7 +107,7 @@ namespace ISPC.Services.HARelated
             this.FPYBySelectedSection = tempFpyBySelectedSection;
         }
 
-        private void GetRelatedFPYListByTimeWithMultiModel()
+        private override void GetRelatedFPYListByTimeWithMultiModel()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
@@ -197,7 +184,7 @@ namespace ISPC.Services.HARelated
             }
         }
 
-        private void GetRelatedFPYListByTimeWithSimpleModelOrNoModel()
+        private override void GetRelatedFPYListByTimeWithSimpleModelOrNoModel()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
@@ -207,10 +194,12 @@ namespace ISPC.Services.HARelated
                 if (this.ModelId != 0)
                 {
                     ModelName = entity.Models.Where(m => m.Model_Id == this.ModelId).Select(m => m.Model_Name).Take(1).FirstOrDefault();
-                    selectCondition.Append(" And Model_Id ==" + this.ModelId);
-                    
+                    selectCondition.Append(" And Model_Id ==" + this.ModelId);                    
                 } 
-                var panelCountListByResult = entity.SPI_Panel.Where(selectCondition.ToString()).Where(panel => (panel.Start_Time >= this.StartTime && panel.End_Time <= this.EndTime)).Select(panel => new
+                var panelCountListByResult = entity.SPI_Panel
+                    .Where(selectCondition.ToString())
+                    .Where(panel => (panel.Start_Time >= this.StartTime && panel.End_Time <= this.EndTime))
+                    .Select(panel => new
                 {
                     panel.Panel_Id,
                     panel.Result.Result_Name,
@@ -224,7 +213,7 @@ namespace ISPC.Services.HARelated
 
                 if (this.timeBy == TimeBy.Week)
                 {
-                    List<WeekOfTimeSection> weekOfTimeSectionList = CalculateWeeks.GetWeekOfTimeSection(StartTime, EndTime);
+                    List<WeekOfTimeSection> weekOfTimeSectionList = CalculateWeeks.GetWeekOfTimeSection(this.StartTime, this.EndTime);
                     // get the FPY by Week based on selected time
                     foreach (var weekOfTimeSection in weekOfTimeSectionList)
                     {
@@ -262,7 +251,7 @@ namespace ISPC.Services.HARelated
                                     }).ToList();
                     foreach (var data in flag)
                     {
-                        temp.Add(data.Time, Math.Round((double)data.GoodPanelsNum / data.TotalPanelsNum, 4) * 100);
+                        temp.Add(data.Time, data.TotalPanelsNum != 0 ? Math.Round((double)data.GoodPanelsNum / data.TotalPanelsNum, 4) * 100 : 0);
                     }
                 }
                 this.FPYBySelectedSection.Add(ModelName, temp);
@@ -307,37 +296,6 @@ namespace ISPC.Services.HARelated
                 }
             }   
 
-            }
-    
-        private void GetDateTimeFilter(ref string filter)
-        {
-           
-            switch (this.timeBy)
-            {
-                case TimeBy.Hour:
-                    filter = "yyyy-MM-dd HH";
-                    break;
-                case TimeBy.Day:
-                    filter = "yyyy-MM-dd";
-                    break;
-                case TimeBy.Month:
-                    filter = "yyyy-MM";
-                    break;
             }            
-        }
-    }
-
-    public enum TimeBy
-    {
-        Hour,
-        Day,
-        Week,
-        Month
-    }
-
-    public enum CategoryBy
-    {
-        Time,
-        TimeAndModel
-    }
+    }  
 }

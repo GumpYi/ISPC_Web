@@ -1,4 +1,7 @@
-﻿$(function () {      
+﻿$(function () {    
+    Highcharts.setOptions({
+        colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+    });  
     $("#Cpk").highcharts({
         chart:{
             borderColor: '#EBBA95',
@@ -464,7 +467,6 @@ var SPI_RealTimeViewModel = function () {
                     spinner.spin(target);                    
             },
             success: function (data) { 
-                console.log(data);                          
                 self.SPIRTData.LastTenPanelsVCpk(data.LastTenPanelsVCpk);
                 self.SPIRTData.LastTenPanelsHCpk(data.LastTenPanelsHCpk);
                 self.SPIRTData.LastTenPanelsACpk(data.LastTenPanelsACpk);
