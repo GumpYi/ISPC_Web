@@ -78,7 +78,7 @@ namespace ISPC.Services.DropDownRelated
             using (ISPCEntities entity = new ISPCEntities())
             {
                 var StationList = from station in entity.Stations
-                                  where (station.Line_Id == Line_Id && station.Machine.Machine_Model.Machine_Type_Id == 3)
+                                  where (station.Line_Id == Line_Id && station.Machine.Machine_Model.Machine_Type_Id == Settings.Default.SPI)
                                   orderby (station.Position)
                                   select new { station.Station_Id, station.Station_Name };
                 return (JsonConvert.SerializeObject(StationList));
@@ -101,6 +101,29 @@ namespace ISPC.Services.DropDownRelated
             {
                 var modelList = from model in entity.Models                               
                                 where (model.Project_Id == Project_Id && model.Type == "SPI")
+                                orderby (model.Creation_Time) descending
+                                select new { model.Model_Id, model.Model_Name };
+                return (JsonConvert.SerializeObject(modelList));
+            }
+        }
+
+        public string GetAOIStations(int LineId)
+        {
+            using (ISPCEntities entity = new ISPCEntities())
+            {
+                var StationList = from station in entity.Stations
+                                  where (station.Line_Id == LineId && station.Machine.Machine_Model.Machine_Type_Id == Settings.Default.AOI)
+                                  orderby (station.Position)
+                                  select new { station.Station_Id, station.Station_Name };
+                return (JsonConvert.SerializeObject(StationList));
+            } 
+        }
+        public string GetAOIModels(int ProjectId)
+        {
+            using (ISPCEntities entity = new ISPCEntities())
+            {
+                var modelList = from model in entity.Models
+                                where (model.Project_Id == ProjectId && model.Type == "AOI")
                                 orderby (model.Creation_Time) descending
                                 select new { model.Model_Id, model.Model_Name };
                 return (JsonConvert.SerializeObject(modelList));

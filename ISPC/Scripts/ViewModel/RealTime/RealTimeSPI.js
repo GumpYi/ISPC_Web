@@ -1,13 +1,13 @@
-﻿$(function () {    
+﻿$(function () {
     Highcharts.setOptions({
         colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
-    });  
+    });
     $("#Cpk").highcharts({
-        chart:{
+        chart: {
             borderColor: '#EBBA95',
             borderWidth: 2
-        },        
-        title:{
+        },
+        title: {
             text: "Selected Groups Cpk Trend Of Ten Panels"
         },
         tooltip: {
@@ -16,21 +16,25 @@
             footerFormat: '</table>',
             shared: true,
             useHTML: true
-        }, 
-        xAxis:{
-            categories:[1,2,3,4,5,6,7,8,9,10]
         },
-        legend:{
+        xAxis: {
+            categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        yAxis: {
+            max: 10,
+            min: 0
+        },
+        legend: {
             enabled: false
         },
         credits: {
             enabled: false
-        } 
-    });     
+        }
+    });
     $("#XBar").highcharts({
-        chart:{
+        chart: {
             borderColor: '#EBBA95',
-            borderWidth: 2, 
+            borderWidth: 2
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">Last {point.key} Panel</span><table>',
@@ -38,27 +42,31 @@
             footerFormat: '</table>',
             shared: true,
             useHTML: true
-        }, 
-        title:{
+        },
+        title: {
             text: "Selected Groups XBar Chart of Ten Panels"
         },
-        xAxis:{
-            categories:[1,2,3,4,5,6,7,8,9,10]
+        xAxis: {
+            categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        yAxis: {
+            min: 0
         },
         credits: {
             enabled: false
-        } 
+        }
     });
     var Cpkchart = $("#Cpk").highcharts();
     var XBarchart = $("#XBar").highcharts();
     Cpkchart.showLoading("Please Select Monitored Station First !");
     XBarchart.showLoading("Please Select Monitored Station First !");
+
     ko.applyBindings(new SPI_RealTimeViewModel());
 });
 
- 
+
 var SPI_RealTimeViewModel = function () {
-    var self = this;    
+    var self = this;
     self.availableBuildings = ko.observableArray([]);
     self.availableSegments = ko.observableArray([]);
     self.availableComps = ko.observableArray([]);
@@ -68,28 +76,29 @@ var SPI_RealTimeViewModel = function () {
     self.selectedSegmentTable = ko.observable();
     self.selectedProjectTable = ko.observable();
     self.selectedModelTable = ko.observable();
-    self.selectedLineTable = ko.observable();   
+    self.selectedModelId = ko.observable();
+    self.selectedLineTable = ko.observable();
     self.selectedSPIStationTable = ko.observableArray();
     self.selectedCpkComp = ko.observableArray([]);
     self.selectedXBarComp = ko.observableArray([]);
-    var opts = {            
-            lines: 13, // 花瓣数目
-            length: 20, // 花瓣长度
-            width: 10, // 花瓣宽度
-            radius: 30, // 花瓣距中心半径
-            corners: 1, // 花瓣圆滑度 (0-1)
-            rotate: 0, // 花瓣旋转角度
-            direction: 1, // 花瓣旋转方向 1: 顺时针, -1: 逆时针
-            color: '#000', // 花瓣颜色
-            speed: 1, // 花瓣旋转速度
-            trail: 60, // 花瓣旋转时的拖影(百分比)
-            shadow: true, // 花瓣是否显示阴影
-            hwaccel: false, //spinner 是否启用硬件加速及高速旋转            
-            className: 'spinner', // spinner css 样式名称
-            zIndex: 2e9, // spinner的z轴 (默认是2000000000)
-            top: '50%', // spinner 相对父容器Top定位 单位 px
-            left: '50%'// spinner 相对父容器Left定位 单位 px
-        };
+    var opts = {
+        lines: 13, // 花瓣数目
+        length: 20, // 花瓣长度
+        width: 10, // 花瓣宽度
+        radius: 30, // 花瓣距中心半径
+        corners: 1, // 花瓣圆滑度 (0-1)
+        rotate: 0, // 花瓣旋转角度
+        direction: 1, // 花瓣旋转方向 1: 顺时针, -1: 逆时针
+        color: '#000', // 花瓣颜色
+        speed: 1, // 花瓣旋转速度
+        trail: 60, // 花瓣旋转时的拖影(百分比)
+        shadow: true, // 花瓣是否显示阴影
+        hwaccel: false, //spinner 是否启用硬件加速及高速旋转            
+        className: 'spinner', // spinner css 样式名称
+        zIndex: 2e9, // spinner的z轴 (默认是2000000000)
+        top: '50%', // spinner 相对父容器Top定位 单位 px
+        left: '50%'// spinner 相对父容器Left定位 单位 px
+    };
 
     var spinner = new Spinner(opts);
 
@@ -111,26 +120,26 @@ var SPI_RealTimeViewModel = function () {
         VLSL: ko.observable(),
         VUCL: ko.observable(),
         VLCL: ko.observable(),
-        
+
         AUSL: ko.observable(),
         ALSL: ko.observable(),
         AUCL: ko.observable(),
         ALCL: ko.observable(),
-        
+
         HUSL: ko.observable(),
         HLSL: ko.observable(),
         HUCL: ko.observable(),
-        HLCL: ko.observable(),     
-        
+        HLCL: ko.observable(),
+
         XOUSL: ko.observable(),
         XOLSL: ko.observable(),
         XOUCL: ko.observable(),
         XOLCL: ko.observable(),
-        
+
         YOUSL: ko.observable(),
         YOLSL: ko.observable(),
         YOUCL: ko.observable(),
-        YOLCL: ko.observable()            
+        YOLCL: ko.observable()
     };
     var loadBuildings = function () {
         $.ajax({
@@ -152,7 +161,7 @@ var SPI_RealTimeViewModel = function () {
                 dataType: "json",
                 success: function (data) {
                     self.availableSegments(ko.toJS(data));
-                    self.selectedSegmentTable(Segment_Id);                   
+                    self.selectedSegmentTable(Segment_Id);
                 }
             });
         }
@@ -160,7 +169,7 @@ var SPI_RealTimeViewModel = function () {
             self.availableSegments([]);
         }
     };
-    self.loadLines = function () {        
+    self.loadLines = function () {
         if (self.selectedSegmentTable()) {
             $.ajax({
                 url: "/Common/GetLines",
@@ -184,81 +193,87 @@ var SPI_RealTimeViewModel = function () {
                 data: { Line_Id: self.selectedLineTable() },
                 dataType: "json",
                 success: function (data) {
-                    self.availableSPIStations(ko.toJS(data));                    
+                    self.availableSPIStations(ko.toJS(data));
                 }
             });
         }
-        else{
+        else {
             self.availableSPIStations([]);
         }
     };
-    self.loadSPIRange = function(){
-         $.ajax({
-                url: "/RTSPI/GetSPIRange",
-                type: "JSON",               
-                dataType: "json",
-                success: function (data) {                   
-                    self.SPIRange.VUSL(data.VUSL);
-                    self.SPIRange.VLSL(data.VLSL);
-                    self.SPIRange.VUCL(data.VUCL);
-                    self.SPIRange.VLCL(data.VLCL);
+    self.loadSPIRange = function () {
+        $.ajax({
+            url: "/RTSPI/GetSPIRange",
+            type: "JSON",
+            dataType: "json",
+            success: function (data) {
+                self.SPIRange.VUSL(data.VUSL);
+                self.SPIRange.VLSL(data.VLSL);
+                self.SPIRange.VUCL(data.VUCL);
+                self.SPIRange.VLCL(data.VLCL);
 
-                    self.SPIRange.AUSL(data.AUSL);
-                    self.SPIRange.ALSL(data.ALSL);
-                    self.SPIRange.AUCL(data.AUCL);
-                    self.SPIRange.ALCL(data.ALCL);
-                    
-                    self.SPIRange.HUSL(data.HUSL);
-                    self.SPIRange.HLSL(data.HLSL);
-                    self.SPIRange.HUCL(data.HUCL);
-                    self.SPIRange.HLCL(data.HLCL);
-                    
-                    self.SPIRange.XOUSL(data.XOUSL);
-                    self.SPIRange.XOLSL(data.XOLSL);
-                    self.SPIRange.XOUCL(data.XOUCL);
-                    self.SPIRange.XOLCL(data.XOLCL);
-                    
-                    self.SPIRange.YOUSL(data.YOUSL);
-                    self.SPIRange.YOLSL(data.YOLSL);
-                    self.SPIRange.YOUCL(data.YOUCL);
-                    self.SPIRange.YOLCL(data.YOLCL);
+                self.SPIRange.AUSL(data.AUSL);
+                self.SPIRange.ALSL(data.ALSL);
+                self.SPIRange.AUCL(data.AUCL);
+                self.SPIRange.ALCL(data.ALCL);
+
+                self.SPIRange.HUSL(data.HUSL);
+                self.SPIRange.HLSL(data.HLSL);
+                self.SPIRange.HUCL(data.HUCL);
+                self.SPIRange.HLCL(data.HLCL);
+
+                self.SPIRange.XOUSL(data.XOUSL);
+                self.SPIRange.XOLSL(data.XOLSL);
+                self.SPIRange.XOUCL(data.XOUCL);
+                self.SPIRange.XOLCL(data.XOLCL);
+
+                self.SPIRange.YOUSL(data.YOUSL);
+                self.SPIRange.YOLSL(data.YOLSL);
+                self.SPIRange.YOUCL(data.YOUCL);
+                self.SPIRange.YOLCL(data.YOLCL);
+            }
+        });
+    };
+    self.updateSPIRange = function () {
+        $.ajax({
+            url: "/RTSPI/UpdateSPIRange",
+            type: "POST",
+            data: ko.toJSON(self.SPIRange),
+            dataType: "text",
+            success: function (data) {
+                self.plotScatter();
+                alert(data);
+            }
+        });
+    };
+
+    self.loadComps = function () {
+        if (self.selectedSPIStationTable()) {
+            $.ajax({
+                url: "/RTSPI/GetCompList",
+                type: "POST",
+                data: { Station_Id: self.selectedSPIStationTable() },
+                dataType: "json",
+                success: function (data) {
+                    self.selectedModelTable(data.ModelName);
+                    self.selectedModelId(data.ModelId);
+                    self.availableComps(data.CompList);
+                    self.selectedCpkComp(data.CpkCompList);
+                    self.selectedXBarComp(data.XBarCompList);
+                    $("#Group").modal({
+                        show: true,
+                        backdrop: "static"
+                    }) //just open;
                 }
             });
-    };
-    self.updateSPIRange = function(){
-        $.ajax({
-                url: "/RTSPI/UpdateSPIRange",
-                type: "POST",  
-                data: ko.toJSON(self.SPIRange),             
-                dataType: "text",
-                success: function (data) {
-                    self.plotScatter();
-                    alert(data);        
-                }
-        }); 
-    };
-
-    self.loadComps = function(){   
-        if(self.selectedSPIStationTable()) {
-            $.ajax({
-            url: "/RTSPI/GetCompList",
-            type: "POST",
-            data: { Station_Id: self.selectedSPIStationTable() },
-            dataType: "json",
-            success: function(data){                       
-                self.selectedModelTable(data.ModelName);                              
-                self.availableComps(data.CompList);
-                 $("#Group").modal('show') //just open;
-            }
-        });    
-        }             
+        }
     };
 
     self.plotCpk = function (type) {
         var chart = $("#Cpk").highcharts();
         chart.hideLoading();
         if (type == undefined || type == "Volume") {
-            type="Volume";
+            type = "Volume";
             var series = chart.series;
             while (series.length > 0) {
                 series[0].remove(false);
@@ -266,7 +281,7 @@ var SPI_RealTimeViewModel = function () {
             chart.redraw();
             chart.addSeries({
                 data: self.SPIRTData.LastTenPanelsVCpk()
-            }, false);           
+            }, false);
         }
         else if (type == "Area") {
             var series = chart.series;
@@ -308,165 +323,178 @@ var SPI_RealTimeViewModel = function () {
                 data: self.SPIRTData.LastTenPanelsYOCpk()
             }, false);
         }
-        chart.setTitle(null, {text: type}, false);
+        chart.setTitle(null, { text: type }, false);
         chart.redraw();
     };
     self.plotXBar = function (type) {
         var chart = $("#XBar").highcharts();
         chart.hideLoading();
-         var series = chart.series;
-            while(series.length>0){
-                series[0].remove(false);
-            }
+        var series = chart.series;
+        while (series.length > 0) {
+            series[0].remove(false);
+        }
         chart.redraw();
-        if(type == undefined || type == "Volume") {
-            type="Volume";
-            $.each(self.SPIRTData.XBarVCompDataList(), function(key,data){
+        if (type == undefined || type == "Volume") {
+            type = "Volume";
+            $.each(self.SPIRTData.XBarVCompDataList(), function (key, data) {
                 var newFlagArray = new Array();
-                $.each(data, function(key, arrayData){
+                $.each(data, function (key, arrayData) {
                     newFlagArray.push(arrayData);
                 });
                 chart.addSeries({
                     name: key,
                     data: newFlagArray
-                }, false);    
-            });       
-        }
-        else if(type == "Area"){
-             $.each(self.SPIRTData.XBarACompDataList(), function(key,data){
-                var newFlagArray = new Array();
-                $.each(data, function(key, arrayData){
-                    newFlagArray.push(arrayData);
-                });
-                chart.addSeries({
-                    name: key,
-                    data: newFlagArray
-                }, false);    
-            });           
-        }
-         else if(type == "Height"){
-             $.each(self.SPIRTData.XBarHCompDataList(), function(key,data){
-                var newFlagArray = new Array();
-                $.each(data, function(key, arrayData){
-                    newFlagArray.push(arrayData);
-                });
-                chart.addSeries({
-                    name: key,
-                    data: newFlagArray
-                }, false);    
-            });           
-        } 
-        else if(type == "XOffset"){
-            $.each(self.SPIRTData.XBarOXCompDataList(), function(key,data){
-            var newFlagArray = new Array();
-            $.each(data, function(key, arrayData){
-                newFlagArray.push(arrayData);
+                }, false);
             });
-            chart.addSeries({
-                name: key,
-                data: newFlagArray
-            }, false);    
-            });           
-         }
-        else if(type == "YOffset"){
-        $.each(self.SPIRTData.XBarOYCompDataList(), function(key,data){
-        var newFlagArray = new Array();
-        $.each(data, function(key, arrayData){
-            newFlagArray.push(arrayData);
-        });
-        chart.addSeries({
-            name: key,
-            data: newFlagArray
-        }, false);    
-        });           
         }
-        chart.setTitle(null, {text: type}, false);
-        chart.redraw();  
+        else if (type == "Area") {
+            $.each(self.SPIRTData.XBarACompDataList(), function (key, data) {
+                var newFlagArray = new Array();
+                $.each(data, function (key, arrayData) {
+                    newFlagArray.push(arrayData);
+                });
+                chart.addSeries({
+                    name: key,
+                    data: newFlagArray
+                }, false);
+            });
+        }
+        else if (type == "Height") {
+            $.each(self.SPIRTData.XBarHCompDataList(), function (key, data) {
+                var newFlagArray = new Array();
+                $.each(data, function (key, arrayData) {
+                    newFlagArray.push(arrayData);
+                });
+                chart.addSeries({
+                    name: key,
+                    data: newFlagArray
+                }, false);
+            });
+        }
+        else if (type == "XOffset") {
+            $.each(self.SPIRTData.XBarOXCompDataList(), function (key, data) {
+                var newFlagArray = new Array();
+                $.each(data, function (key, arrayData) {
+                    newFlagArray.push(arrayData);
+                });
+                chart.addSeries({
+                    name: key,
+                    data: newFlagArray
+                }, false);
+            });
+        }
+        else if (type == "YOffset") {
+            $.each(self.SPIRTData.XBarOYCompDataList(), function (key, data) {
+                var newFlagArray = new Array();
+                $.each(data, function (key, arrayData) {
+                    newFlagArray.push(arrayData);
+                });
+                chart.addSeries({
+                    name: key,
+                    data: newFlagArray
+                }, false);
+            });
+        }
+        chart.setTitle(null, { text: type }, false);
+        chart.redraw();
     };
     self.plotScatter = function (type) {
-        for(var i=1;i<=10;i++){
-            var chart = $("#placeholder"+i).highcharts();
-             if(chart != undefined)chart.destroy();
-        }                       
-        for (var i = 1; i <= self.SPIRTData.LastTenPanelsScatterList().length; i++) {                                                    
-           if(type == undefined||type=="Volume"){
-                areaOptions.xAxis.plotLines[0].value=self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeAvg;
-                areaOptions.xAxis.plotLines[0].label.text=self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeAvg+"%"; 
-                
-                areaOptions.xAxis.plotLines[1].value=self.SPIRange.VLCL();
-                areaOptions.xAxis.plotLines[1].label.text="LCL("+self.SPIRange.VLCL()+")%";
+        for (var i = 1; i <= 10; i++) {
+            var chart = $("#placeholder" + i).highcharts();
+            if (chart != undefined) chart.destroy();
+        }
+        for (var i = 1; i <= self.SPIRTData.LastTenPanelsScatterList().length; i++) {
+            if (type == undefined || type == "Volume") {
+                areaOptions.xAxis.plotLines[0].value = self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeAvg;
+                areaOptions.xAxis.plotLines[0].label.text = self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeAvg + "%";
 
-                areaOptions.xAxis.plotLines[2].value=self.SPIRange.VUCL();
-                areaOptions.xAxis.plotLines[2].label.text="UCL("+self.SPIRange.VUCL()+")%";
-                               
+                areaOptions.xAxis.plotLines[1].value = self.SPIRange.VLCL();
+                areaOptions.xAxis.plotLines[1].label.text = "LCL(" + self.SPIRange.VLCL() + ")%";
+
+                areaOptions.xAxis.plotLines[2].value = self.SPIRange.VUCL();
+                areaOptions.xAxis.plotLines[2].label.text = "UCL(" + self.SPIRange.VUCL() + ")%";
+
                 //areaOptions.series[0].name= self.SPIRTData.LastTenPanelsScatterList()[i-1].Panel_Id;
-                areaOptions.series[0].data= self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadVolumeDistributeList;
-                areaOptions.labels.items[0].html = "Time:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime+" Squeegee: "+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee+"<br/>"
-                                                   +"Average:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeAvg+"% "
-                                                   +"Max:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeMax+"% "
-                                                   +"Min:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeMin+"%";
+                areaOptions.series[0].data = self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadVolumeDistributeList;
+                areaOptions.labels.items[0].html = "Time:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime + " Squeegee: " + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee + "<br/>"
+                                                   + "Average:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeAvg + "% "
+                                                   + "Max:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeMax + "% "
+                                                   + "Min:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.VolumeMin + "%";
                 $("#placeholder" + i).highcharts(areaOptions);
-           }
-           else if(type == "Area"){              
+            }
+            else if (type == "Area") {
                 //areaOptions.series[0].name= self.SPIRTData.LastTenPanelsScatterList()[i-1].Panel_Id;
-                areaOptions.xAxis.plotLines[0].value=self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaAvg;
-                areaOptions.xAxis.plotLines[0].label.text=self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaAvg+"%";
+                areaOptions.xAxis.plotLines[0].value = self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaAvg;
+                areaOptions.xAxis.plotLines[0].label.text = self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaAvg + "%";
 
-                areaOptions.xAxis.plotLines[1].value=self.SPIRange.ALCL();
-                areaOptions.xAxis.plotLines[1].label.text="LCL("+self.SPIRange.ALCL()+")%";
+                areaOptions.xAxis.plotLines[1].value = self.SPIRange.ALCL();
+                areaOptions.xAxis.plotLines[1].label.text = "LCL(" + self.SPIRange.ALCL() + ")%";
 
-                areaOptions.xAxis.plotLines[2].value=self.SPIRange.AUCL();
-                areaOptions.xAxis.plotLines[2].label.text="UCL("+self.SPIRange.AUCL()+")%";
+                areaOptions.xAxis.plotLines[2].value = self.SPIRange.AUCL();
+                areaOptions.xAxis.plotLines[2].label.text = "UCL(" + self.SPIRange.AUCL() + ")%";
 
-                areaOptions.series[0].data= self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadAreaDistributeList;
-                areaOptions.labels.items[0].html = "Time:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime+" Squeegee: "+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee+"<br/>"
-                                                   +"Average:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaAvg+"% "
-                                                   +"Max:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaMax+"% "
-                                                   +"Min:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaMin+"% ";
-                $("#placeholder" + i).highcharts(areaOptions);     
-           }
-           else if(type =="Height"){                
+                areaOptions.series[0].data = self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadAreaDistributeList;
+                areaOptions.labels.items[0].html = "Time:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime + " Squeegee: " + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee + "<br/>"
+                                                   + "Average:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaAvg + "% "
+                                                   + "Max:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaMax + "% "
+                                                   + "Min:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.AreaMin + "% ";
+                $("#placeholder" + i).highcharts(areaOptions);
+            }
+            else if (type == "Height") {
                 //areaOptions.series[0].name= self.SPIRTData.LastTenPanelsScatterList()[i-1].Panel_Id;
-                areaHOptions.series[0].data= self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadHeightDistributeList;
-                areaHOptions.labels.items[0].html = "Time:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime+" Squeegee: "+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee+"<br/>"
-                                                   +"Average:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.HeightAvg + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
-                                                   +" Max:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.HeightMax+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
-                                                   +" Min:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.HeightMin+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit;
-                areaHOptions.xAxis.labels.format = '{value}'+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit;
-                $("#placeholder" + i).highcharts(areaHOptions);          
-           } 
-           else if(type == "Offset"){              
+                areaHOptions.series[0].data = self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadHeightDistributeList;
+                areaHOptions.labels.items[0].html = "Time:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime + " Squeegee: " + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee + "<br/>"
+                                                   + "Average:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.HeightAvg + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
+                                                   + " Max:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.HeightMax + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
+                                                   + " Min:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.HeightMin + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit;
+                areaHOptions.xAxis.labels.format = '{value}' + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit;
+                $("#placeholder" + i).highcharts(areaHOptions);
+            }
+            else if (type == "Offset") {
                 //scatterOptions.series[0].name= self.SPIRTData.LastTenPanelsScatterList()[i-1].Panel_Id;
-                scatterOptions.series[0].data= self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadOffsetSplashList;
-                scatterOptions.labels.items[0].html ="Time:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime+" Squeegee: "+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee+"<br/>"                                                  
-                                                   +"MaxX:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.XOffsetMax+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
-                                                   +" MaxY:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.YOffsetMax+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit+"<br/>"
-                                                   +"MinX:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.XOffsetMin+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
-                                                   +" MinY:"+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.YOffsetMin+self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit;            
-                $("#placeholder" + i).highcharts(scatterOptions);                          
-           }                              
-       }
+                scatterOptions.series[0].data = self.SPIRTData.LastTenPanelsScatterList()[i - 1].PadOffsetSplashList;
+                scatterOptions.labels.items[0].html = "Time:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].TestTime + " Squeegee: " + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Squeegee + "<br/>"
+                                                   + "MaxX:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.XOffsetMax + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
+                                                   + " MaxY:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.YOffsetMax + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit + "<br/>"
+                                                   + "MinX:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.XOffsetMin + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit
+                                                   + " MinY:" + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Range.YOffsetMin + self.SPIRTData.LastTenPanelsScatterList()[i - 1].Unit;
+                $("#placeholder" + i).highcharts(scatterOptions);
+            }
+        }
     };
     self.PlotAllElement = function () {
         self.plotCpk();
         self.plotXBar();
         self.plotScatter();
     };
-       
-    self.loadRTData = function () {       
+    self.updateCpkXBarComps = function () {
+        console.log(self.selectedCpkComp()[0] == "");
+        $.ajax({
+            url: "/RTSPI/UpdateCpkXBarComps",
+            type: "POST",
+            async: true,
+            data: {
+                ModelId: self.selectedModelId(),
+                CpkComps: self.selectedCpkComp()[0] != "" ? self.selectedCpkComp() : self.availableComps()[0],
+                XBarComps: self.selectedXBarComp()[0] != "" ? self.selectedXBarComp() : self.availableComps()[0]
+            },
+            dataType: "text",
+            success: function (data) {              
+            }
+        });
+    };
+    self.loadRTData = function () {
         $.ajax({
             url: "/RTSPI/GetSPIRTData",
             type: "POST",
-            data: { Station_Id: self.selectedSPIStationTable(),
-                    selectedCpkComp: self.selectedCpkComp().length !=0 ? self.selectedCpkComp() : self.availableComps()[0],                       
-                    selectedXBarComp: self.selectedXBarComp().length !=0 ? self.selectedXBarComp() : self.availableComps()[0]                    
-                  },
+            data: { StationId: self.selectedSPIStationTable() },
             dataType: "JSON",
+            async: true,
             beforeSend: function () {
-                    var target = $("#firstDiv").get(0);
-                    spinner.spin(target);                    
+                var target = $("#firstDiv").get(0);
+                spinner.spin(target);
             },
-            success: function (data) { 
+            success: function (data) {
                 self.SPIRTData.LastTenPanelsVCpk(data.LastTenPanelsVCpk);
                 self.SPIRTData.LastTenPanelsHCpk(data.LastTenPanelsHCpk);
                 self.SPIRTData.LastTenPanelsACpk(data.LastTenPanelsACpk);
@@ -478,22 +506,28 @@ var SPI_RealTimeViewModel = function () {
                 self.SPIRTData.XBarHCompDataList(data.XBarHCompDataList);
                 self.SPIRTData.XBarOXCompDataList(data.XBarOXCompDataList);
                 self.SPIRTData.XBarOYCompDataList(data.XBarOYCompDataList);
-                self.PlotAllElement();     
-                spinner.spin();           
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                self.PlotAllElement();
                 spinner.spin();
-                alert("Error happened!");                                        
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                spinner.spin();
+                alert("Error happened!");
             }
         });
     };
 
-    $("#SaveUSLDialog").click(function(){
+    $("#SaveUSLDialog").click(function () {
         self.updateSPIRange();
         $("#USLRange").modal('hide') //just close;     
     });
-    $("#SaveSelectGroupDialog").click(function(){
-        self.loadRTData();
+    $("#SaveSelectGroupDialog").click(function () {
+        if (self.availableComps().length != 0) {
+            self.updateCpkXBarComps();
+            self.loadRTData();
+        }
+        else {
+            alert("Please selected SPI Station");
+        }
         $("#Group").modal('hide') //just close;     
     });
     loadBuildings();
@@ -528,7 +562,7 @@ var scatterOptions = {
         enabled:false
     },
     title:{            
-        text: null,             
+        text: null             
     },
     legend: {       
         enabled: false           
@@ -598,7 +632,7 @@ var scatterOptions = {
                     } 
                 } 
             } 
-        },       
+        }       
     },
     tooltip: {
         enabled: false
@@ -607,7 +641,6 @@ var scatterOptions = {
         enabled: false
     }
 };
-
 
 var areaOptions = {
     chart: {
@@ -638,7 +671,7 @@ var areaOptions = {
         enabled:false
     },
     title:{            
-        text: null,             
+        text: null             
     },
     legend: {
         align: 'center',
@@ -732,7 +765,7 @@ var areaHOptions = {
     chart: {
         type: "areaspline",
         borderColor: '#EBBA95',
-        borderWidth: 2,
+        borderWidth: 2
         //inverted: true
     },
     labels:{ 

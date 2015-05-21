@@ -47,7 +47,7 @@ namespace ISPC.Services.HARelated
             return (JsonConvert.SerializeObject(this));
         }
 
-        private override void OptimizeDicStructure()
+        protected override void OptimizeDicStructure()
         {
             string filter = string.Empty;
             this.GetDateTimeFilter(ref filter);
@@ -107,7 +107,7 @@ namespace ISPC.Services.HARelated
             this.FPYBySelectedSection = tempFpyBySelectedSection;
         }
 
-        private override void GetRelatedFPYListByTimeWithMultiModel()
+        protected override void GetRelatedFPYListByTimeWithMultiModel()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
@@ -184,7 +184,7 @@ namespace ISPC.Services.HARelated
             }
         }
 
-        private override void GetRelatedFPYListByTimeWithSimpleModelOrNoModel()
+        protected override void GetRelatedFPYListByTimeWithSimpleModelOrNoModel()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
@@ -257,7 +257,7 @@ namespace ISPC.Services.HARelated
                 this.FPYBySelectedSection.Add(ModelName, temp);
             }
         }
-        private void GetRelatedDPPMListByTime()
+        protected void GetRelatedDPPMListByTime()
         {
             using (ISPCEntities entity = new ISPCEntities())
             { 

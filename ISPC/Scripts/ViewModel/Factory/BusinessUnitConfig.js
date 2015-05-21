@@ -63,7 +63,8 @@ var BUViewModel = function () {
         $.ajax({
             url: "/JsonBU/GetBUs",
             type: "POST",
-            data: { Building_Id: (self.selectedBuildingTable() ? self.selectedBuildingTable() : 0), Segment_Id: (self.selectedSegmentTable() ? self.selectedSegmentTable() : 0) },
+            data: { Building_Id: (self.selectedBuildingTable() ? self.selectedBuildingTable() : 0),
+                    Segment_Id: (self.selectedSegmentTable() ? self.selectedSegmentTable() : 0) },
             dataType: "json",
             success: function (data) {
                 self.BUList(ko.toJS(data));

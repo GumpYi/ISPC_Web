@@ -40,7 +40,6 @@ namespace ISPC.EntityFramework
         public DbSet<Machine_Type> Machine_Type { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Repair_State_Result> Repair_State_Result { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<Segment> Segments { get; set; }
         public DbSet<SPI_Board> SPI_Board { get; set; }

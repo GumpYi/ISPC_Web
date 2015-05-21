@@ -427,7 +427,26 @@ var RealTimeIndexViewModel = function () {
         AOIFPPMUCL: ko.observable(),
         AOIDPPMUCL: ko.observable()
     };
-    
+    var opts = {            
+        lines: 13, // 
+        length: 20, // 花瓣长度
+        width: 10, // 花瓣宽度
+        radius: 30, // 花瓣距中心半径
+        corners: 1, // 花瓣圆滑度 (0-1)
+        rotate: 0, // 花瓣旋转角度
+        direction: 1, // 花瓣旋转方向 1: 顺时针, -1: 逆时针
+        color: '#000', // 花瓣颜色
+        speed: 1, // 花瓣旋转速度
+        trail: 60, // 花瓣旋转时的拖影(百分比)
+        shadow: true, // 花瓣是否显示阴影
+        hwaccel: false, //spinner 是否启用硬件加速及高速旋转            
+        className: 'spinner', // spinner css 样式名称
+        zIndex: 2e9, // spinner的z轴 (默认是2000000000)
+        top: '50%', // spinner 相对父容器Top定位 单位 px
+        left: '50%'// spinner 相对父容器Left定位 单位 px
+    };
+    var spinner = new Spinner(opts);
+
     var loadBuildings = function () {
         $.ajax({
             url: "/Common/getBuildings",
@@ -570,8 +589,7 @@ var RealTimeIndexViewModel = function () {
             type: "POST",
             data: ko.toJSON(self.ShownLineList),
             dataType: "text",
-            success: function (data) {
-                alert(data);
+            success: function (data) {               
                 getRealTimeData();
                 $('#LineModel').modal('hide') //just close;                                                                                  
             },
@@ -598,6 +616,10 @@ var RealTimeIndexViewModel = function () {
             url: "/RTIndex/RefreshIndexData",
             type: "JSON",            
             dataType: "json",
+            beforeSend: function () {
+                var target = $("#firstDiv").get(0);
+                spinner.spin(target);                    
+            },
             success: function (data) {               
                 $.each(data, function (key, value) {
                     var Line_Name = value.Line_Name;
@@ -643,12 +665,14 @@ var RealTimeIndexViewModel = function () {
 
                 self.FPYList_AOI(dataSet_FPY_AOI);
                 self.DPPMList_AOI(dataSet_DPPM_AOI); 
-                self.FPPMList_AOI(dataSet_FPPM_AOI);                  
+                self.FPPMList_AOI(dataSet_FPPM_AOI);     
+                spinner.spin();             
             },
             error: function () {
-                alert("Please Choose Shown Line!");
+                alert("Please Choose Shown Line or something wrong");
                 self.FPYList_SPI([]);
                 self.DPPMList_SPI([]);
+                spinner.spin();
             }
         });
     };

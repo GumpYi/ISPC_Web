@@ -22,15 +22,13 @@ namespace ISPC.Controllers
            
             return View();
         }
-        public ActionResult GetSPIRTData()
+        public ActionResult GetSPIRTData(int StationId)
         {            
-            int Station_Id = int.Parse(Request.Form[0]);
-            string[] selectedCpkComp = Request.Form[1].Split(',');
-            string[] slectedXBarComp = Request.Form[2].Split(',');
+                     
             RTSPIService target = new RTSPIService();           
             SPIRangeData data = Session["SPIRangeData"] == null ? SPIRangeConfig.FetchSPIRangeFromSetting() : (SPIRangeData)Session["SPIRangeData"];
-            string a = target.GetSPIRTDataJson(Station_Id, selectedCpkComp, slectedXBarComp, data);                     
-            return Content(a);
+            string rtLastTenData = target.GetSPIRTDataJson(StationId, data);                     
+            return Content(rtLastTenData);
         }
         public ActionResult GetSPIRange()
         {
@@ -47,6 +45,16 @@ namespace ISPC.Controllers
         {
             RTSPIService service = new RTSPIService();
             return Content(service.GetComponentList(Station_Id));
+        }
+
+        public ActionResult UpdateCpkXBarComps() 
+        {
+            int ModelId = int.Parse(Request.Form[0]);
+           string selectedCpkComp = Request.Form[1];
+            string selectedXBarComp = Request.Form[2];
+            RTSPIService target = new RTSPIService();
+            target.UpdateCpkXBarComps(ModelId, selectedCpkComp, selectedXBarComp);
+            return Content("Success");
         }
     }
 }

@@ -47,7 +47,7 @@ namespace ISPC.Services.HARelated
             return (JsonConvert.SerializeObject(this));
         }
 
-        private override void OptimizeDicStructure()
+        protected override void OptimizeDicStructure()
         {
             string filter = string.Empty;
             this.GetDateTimeFilter(ref filter);
@@ -110,7 +110,7 @@ namespace ISPC.Services.HARelated
             #endregion
 
             #region optimized the this.FPPMSelectedSection
-            DateTime startTimeByTimeBy_FPPM = DateTime.ParseExact(this.StartTime.ToString(filter), filter, System.Globalization.CultureInfo.InvariantCulture);
+                DateTime startTimeByTimeBy_FPPM = DateTime.ParseExact(this.StartTime.ToString(filter), filter, System.Globalization.CultureInfo.InvariantCulture);
                 DateTime endTimeByTimeBy_FPPM = DateTime.ParseExact(this.EndTime.ToString(filter), filter, System.Globalization.CultureInfo.InvariantCulture);
                 while (startTimeByTimeBy_FPPM <= endTimeByTimeBy_FPPM)
                 {
@@ -134,12 +134,13 @@ namespace ISPC.Services.HARelated
             #endregion
             
             tempDPMOBySelectedSection = this.DPMOBySelectedSection.OrderBy(m => DateTime.ParseExact(m.Key, filter, System.Globalization.CultureInfo.InvariantCulture)).ToDictionary(m => m.Key, m => m.Value);
+            tempFPPMBySelectedSection = this.FPPMBySelectedSection.OrderBy(m => DateTime.ParseExact(m.Key, filter, System.Globalization.CultureInfo.InvariantCulture)).ToDictionary(m => m.Key, m => m.Value);
             this.DPMOBySelectedSection = tempDPMOBySelectedSection;
             this.FPPMBySelectedSection = tempFPPMBySelectedSection;
             this.FPYBySelectedSection = tempFpyBySelectedSection;       
         }
 
-        private override void GetRelatedFPYListByTimeWithMultiModel()
+        protected override void GetRelatedFPYListByTimeWithMultiModel()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
@@ -217,12 +218,12 @@ namespace ISPC.Services.HARelated
             }
         }
 
-        private override void GetRelatedFPYListByTimeWithSimpleModelOrNoModel()
+        protected override void GetRelatedFPYListByTimeWithSimpleModelOrNoModel()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
                 string ModelName = "Only By Time";
-                StringBuilder selectCondition = new StringBuilder();
+                StringBuilder selectCondition = new StringBuilder("1 == 1");
                 selectCondition.Append("And Station_Id =="+this.StationId);
                 if (this.ModelId != 0)
                 {
@@ -234,7 +235,7 @@ namespace ISPC.Services.HARelated
                     selectCondition.Append(" And Model_Id =="+this.ModelId);
                 }
                 var panelCountListByResult = entity.AOI_Panel.Where(selectCondition.ToString())
-                    .Where(panel => panel.Start_Time >= this.StartTime && panel.End_Time <= this.EndTime)
+                    .Where(panel => (panel.Start_Time >= this.StartTime && panel.End_Time <= this.EndTime))
                     .Select(panel => new
                     {
                         panel.Panel_Id,

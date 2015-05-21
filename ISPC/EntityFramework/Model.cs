@@ -27,6 +27,8 @@ namespace ISPC.EntityFramework
         public string Components { get; set; }
         public int Creator_Id { get; set; }
         public System.DateTime Creation_Time { get; set; }
+        public string CpkComponents { get; set; }
+        public string XBarComponents { get; set; }
     
         public virtual ICollection<AOI_Panel> AOI_Panel { get; set; }
         public virtual ICollection<SPI_Panel> SPI_Panel { get; set; }

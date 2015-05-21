@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ISPCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="ISPCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ISPCModelStoreContainer">
           <EntitySet Name="AOI_Board" EntityType="ISPCModel.Store.AOI_Board" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AOI_Component" EntityType="ISPCModel.Store.AOI_Component" store:Type="Tables" Schema="dbo" />
@@ -21,7 +21,6 @@
           <EntitySet Name="Machine_Type" EntityType="ISPCModel.Store.Machine_Type" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Model" EntityType="ISPCModel.Store.Model" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Project" EntityType="ISPCModel.Store.Project" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Repair_State_Result" EntityType="ISPCModel.Store.Repair_State_Result" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Result" EntityType="ISPCModel.Store.Result" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Segment" EntityType="ISPCModel.Store.Segment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SPI_Board" EntityType="ISPCModel.Store.SPI_Board" store:Type="Tables" Schema="dbo" />
@@ -397,6 +396,8 @@
           <Property Name="Components" Type="nvarchar(max)" />
           <Property Name="Creator_Id" Type="int" Nullable="false" />
           <Property Name="Creation_Time" Type="datetime" Nullable="false" />
+          <Property Name="CpkComponents" Type="nvarchar(max)" />
+          <Property Name="XBarComponents" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -410,13 +411,6 @@
           <Property Name="Creator_Id" Type="int" Nullable="false" />
           <Property Name="Creation_Time" Type="datetime" Nullable="false" />
           <Property Name="Effect_Time" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Repair_State_Result">
-          <Key>
-            <PropertyRef Name="Repair_State_Result_Id" />
-          </Key>
-          <Property Name="Repair_State_Result_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Repair_State_Result_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -1134,8 +1128,7 @@
           <Parameter Name="error_message_xml" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="filename" Type="nvarchar" Mode="InOut" />
         </Function>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ISPCModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -1155,7 +1148,6 @@
           <EntitySet Name="Machine_Type" EntityType="ISPCModel.Machine_Type" />
           <EntitySet Name="Models" EntityType="ISPCModel.Model" />
           <EntitySet Name="Projects" EntityType="ISPCModel.Project" />
-          <EntitySet Name="Repair_State_Result" EntityType="ISPCModel.Repair_State_Result" />
           <EntitySet Name="Results" EntityType="ISPCModel.Result" />
           <EntitySet Name="Segments" EntityType="ISPCModel.Segment" />
           <EntitySet Name="SPI_Board" EntityType="ISPCModel.SPI_Board" />
@@ -1570,6 +1562,8 @@
           <NavigationProperty Name="SPI_Panel" Relationship="ISPCModel.FK_Model_SPI_Panel" FromRole="Model" ToRole="SPI_Panel" />
           <NavigationProperty Name="Project" Relationship="ISPCModel.FK_Project_Model" FromRole="Model" ToRole="Project" />
           <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Model" FromRole="Model" ToRole="UserProfile" />
+          <Property Type="String" Name="CpkComponents" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="XBarComponents" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -1587,13 +1581,6 @@
           <NavigationProperty Name="Models" Relationship="ISPCModel.FK_Project_Model" FromRole="Project" ToRole="Model" />
           <NavigationProperty Name="Segment" Relationship="ISPCModel.FK_Segment_Project" FromRole="Project" ToRole="Segment" />
           <NavigationProperty Name="UserProfile" Relationship="ISPCModel.FK_UserProfile_Project" FromRole="Project" ToRole="UserProfile" />
-        </EntityType>
-        <EntityType Name="Repair_State_Result">
-          <Key>
-            <PropertyRef Name="Repair_State_Result_Id" />
-          </Key>
-          <Property Name="Repair_State_Result_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Repair_State_Result_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -2494,6 +2481,8 @@
           <EntitySetMapping Name="Models">
             <EntityTypeMapping TypeName="ISPCModel.Model">
               <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="XBarComponents" ColumnName="XBarComponents" />
+                <ScalarProperty Name="CpkComponents" ColumnName="CpkComponents" />
                 <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
                 <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -2515,14 +2504,6 @@
                 <ScalarProperty Name="Creator_Id" ColumnName="Creator_Id" />
                 <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
                 <ScalarProperty Name="Effect_Time" ColumnName="Effect_Time" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Repair_State_Result">
-            <EntityTypeMapping TypeName="ISPCModel.Repair_State_Result">
-              <MappingFragment StoreEntitySet="Repair_State_Result">
-                <ScalarProperty Name="Repair_State_Result_Id" ColumnName="Repair_State_Result_Id" />
-                <ScalarProperty Name="Repair_State_Result_Name" ColumnName="Repair_State_Result_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2715,7 +2696,6 @@
         <EntityTypeShape EntityType="ISPCModel.Machine_Type" Width="1.5" PointX="5.25" PointY="28" Height="2.5571907552083388" IsExpanded="true" />
         <EntityTypeShape EntityType="ISPCModel.Model" Width="1.5" PointX="17.25" PointY="18.75" Height="3.1340950520833388" IsExpanded="true" />
         <EntityTypeShape EntityType="ISPCModel.Project" Width="1.5" PointX="15" PointY="18" Height="3.3263964843750031" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISPCModel.Repair_State_Result" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
         <EntityTypeShape EntityType="ISPCModel.Result" Width="1.5" PointX="10.5" PointY="27.625" Height="3.7109993489583388" IsExpanded="true" />
         <EntityTypeShape EntityType="ISPCModel.Segment" Width="1.5" PointX="7.5" PointY="16.75" Height="3.5186979166666674" IsExpanded="true" />
         <EntityTypeShape EntityType="ISPCModel.SPI_Board" Width="1.5" PointX="27.75" PointY="25.375" Height="2.9417936197916674" IsExpanded="true" />

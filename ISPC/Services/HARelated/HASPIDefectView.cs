@@ -14,14 +14,11 @@ namespace ISPC.Services.HARelated
         public string ComponentName;
         public string DefectType;
     }
-    public class HASPIDefectView
+    public sealed class HASPIDefectView: HADefectView
     {
-        public HASPIDefectView(int StationId, DateTime StartTime, DateTime EndTime, int ModelId)
-        {
-            this.StationId = StationId;
-            this.StartTime = StartTime;
-            this.EndTime = EndTime;
-            this.ModelId = ModelId;
+        public HASPIDefectView(int stationId, DateTime startTime, DateTime endTime, int modelId)
+            :base(stationId, startTime, endTime, modelId)
+        {            
             this.ComponentDetailList = new List<HASPIComponent>();
             this.TopFiveExcessiveComp = new Dictionary<string, int>();
             this.TopFiveBridgingComp = new Dictionary<string, int>();
@@ -34,11 +31,8 @@ namespace ISPC.Services.HARelated
             this.TopFiveSmearComp = new Dictionary<string, int>();
             this.TopFiveUpperHeightComp = new Dictionary<string, int>();
         }
-        #region property define
-        public int StationId { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public int ModelId { get; set; }
+       
+        #region
         public Dictionary<string, float> DefectTypeCountPercent { get; set; }
         public int TotalPanelCounts { get; set; }
         public int GoodPanelCounts { get; set; }
@@ -60,7 +54,7 @@ namespace ISPC.Services.HARelated
         private List<DefectAndComp> TempSelectedSPIPadDataList { get; set; }
         #endregion
 
-        public string GetDefectViewDataCollection()
+        public override string GetDefectViewDataCollection()
         {
             this.TempSelectedSPIPadDataList = new List<DefectAndComp>();
             this.GetCountByTopTenLocationWithDetail();
@@ -70,7 +64,7 @@ namespace ISPC.Services.HARelated
             return (JsonConvert.SerializeObject(this));
         }
 
-        private void GetBasicDefectViewData()
+        protected override void GetBasicDefectViewData()
         {
             using (ISPCEntities entity = new ISPCEntities())
             {
@@ -368,6 +362,6 @@ namespace ISPC.Services.HARelated
                 this.TopFiveShapeComp.Add(rowdata.ComponentName, rowdata.Count);
             }
         }
-
+       
     }
 }
